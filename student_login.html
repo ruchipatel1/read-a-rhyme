@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <title>Read-A-Rhyme</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row pt-5">
+            <div class="col-12">
+                <a href="teacher_login.html">Login as teacher</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <h1>Read-A-Rhyme</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center pt-5">
+            <div class="col-6">
+                <form action="student_dash.html">
+                    <div class="form-group">
+                        <label for="usernameInput">Username</label>
+                        <input type="Login" class="form-control" id="usernameInput"
+                            aria-describedby="usernameHelp" value="" placeholder="Enter username">
+                    </div>
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <button type="button" class="btn btn-square" onclick="addLetter('a');" style="background-color: #cfe9ea;" id="a"><img src="src/img/a.png" class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('b');" style="background-color: #cfe9ea;" id="b"><img src="src/img/b.png" class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('c');" style="background-color: #cfe9ea;" id="c"><img src="src/img/c.png" class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('d');" style="background-color: #cfe9ea;" id="d"><img src="src/img/d.png" class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('e');" style="background-color: #cfe9ea;" id="e"><img src="src/img/e.png" class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('f');" style="background-color: #cfe9ea;" id="f"><img src="src/img/f.png" class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('g');" style="background-color: #cfe9ea;" id="g"><img src="src/img/g.png" class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('h');" style="background-color: #cfe9ea;" id="h"><img src="src/img/h.png" class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('i');" style="background-color: #cfe9ea;" id="i"><img src="src/img/i.png" class="img-responsive"></button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center"style="padding-left: 7%;padding-right: 7%;" >
+                            <button type="button" class="btn btn-square" onclick="addLetter('j');"  style="background-color: #cfe9ea;" id="j"><img src="src/img/j.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('k');"  style="background-color: #cfe9ea;" id="k"><img src="src/img/k.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('l');"  style="background-color: #cfe9ea;" id="l"><img src="src/img/l.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('m');"  style="background-color: #cfe9ea;" id="m"><img src="src/img/m.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('n');"  style="background-color: #cfe9ea;" id="n"><img src="src/img/n.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('o');"  style="background-color: #cfe9ea;" id="o"><img src="src/img/o.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('p');"  style="background-color: #cfe9ea;" id="p"><img src="src/img/p.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('q');"  style="background-color: #cfe9ea;" id="q"><img src="src/img/q.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('r');"  style="background-color: #cfe9ea;" id="r"><img src="src/img/r.png"  class="img-responsive"></button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <button type="button" class="btn btn-square" onclick="addLetter('s');" style="background-color: #cfe9ea;" id="s"><img src="src/img/s.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('t');" style="background-color: #cfe9ea;" id="t"><img src="src/img/t.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('u');" style="background-color: #cfe9ea;" id="u"><img src="src/img/u.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('v');" style="background-color: #cfe9ea;" id="v"><img src="src/img/v.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('w');" style="background-color: #cfe9ea;" id="w"><img src="src/img/w.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('x');" style="background-color: #cfe9ea;" id="x"><img src="src/img/x.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('y');" style="background-color: #cfe9ea;" id="y"><img src="src/img/y.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('z');" style="background-color: #cfe9ea;" id="z"><img src="src/img/z.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('0');" style="background-color: #cfe9ea;" id="0"><img src="src/img/0.png"  class="img-responsive"></button>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <button type="button" class="btn btn-square" onclick="addLetter('1');" style="background-color: #cfe9ea;" id="1"><img src="src/img/1.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('2');" style="background-color: #cfe9ea;" id="2"><img src="src/img/2.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('3');" style="background-color: #cfe9ea;" id="3"><img src="src/img/3.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('4');" style="background-color: #cfe9ea;" id="4"><img src="src/img/4.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('5');" style="background-color: #cfe9ea;" id="5"><img src="src/img/5.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('6');" style="background-color: #cfe9ea;" id="6"><img src="src/img/6.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('7');" style="background-color: #cfe9ea;" id="7"><img src="src/img/7.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('8');" style="background-color: #cfe9ea;" id="8"><img src="src/img/8.png"  class="img-responsive"></button>
+                            <button type="button" class="btn btn-square" onclick="addLetter('9');" style="background-color: #cfe9ea;" id="9"><img src="src/img/9.png"  class="img-responsive"></button>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-outline-secondary mt-5 px-5 py-2">Enter</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Keep this script just before the </body> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+    <script src="src/js/student_login.js"></script>
+</body>
+
+</html>
