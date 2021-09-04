@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "read-a-rhyme-reactnative",
+    "slug": "read-a-rhyme-reactnative",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "read-a-rhyme-reactnative"
+}
