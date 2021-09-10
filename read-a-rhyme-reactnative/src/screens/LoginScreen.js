@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, useRef} from "react";
 import { Button, Text, View, TextInput, FlatList} from "react-native";
 import {AuthContext} from "../navigation/AuthContext";
 import {styles} from "../Styles";
@@ -6,9 +6,13 @@ import {styles} from "../Styles";
 export const LoginScreen = () => {
     const { setUser } = useContext(AuthContext);
     const [keebDataSource, setKeebDataSource] = useState([]);
-    var [passcode, setPasscode] = useState([]);
+    // Passcode is stored in here
+    const passcodeRef = useRef("")
+    // Need to update a state variable to force rerender in functional component
+    var [passcodeState, setPasscodeState] = useState("");
 
 
+    // Generate Data passed to Keyboard FlatList, i.e. A-Z,0-9. 
     useState(() => {
         let items = Array.apply(null, Array(36)).map((v, i) => {
             let character = "0";
@@ -25,48 +29,51 @@ export const LoginScreen = () => {
     return (
         <View style={styles.container}>
             <Text>Login</Text>
-
-            <FlatList
-                data={ keebDataSource }
-                renderItem={({ item }) => (
-                    <View style={{ flex: 1, flexDirection: 'column', margin: 10 }}>
-                        <Button 
-                            title={item.char}
-                            onPress={() => {
-                                if (passcode.length < 5) {
-                                    passcode += item.char;
-                                }
-                                setPasscode(passcode);
-                            }}
-                         />
-                    </View>
-                )}
-                numColumns={9}
-            />
-            <View
-                style={{flexDirection:"row"}}
-                >
-                <TextInput
-                    style={{ height: 40}}
-                    placeholder="passcode"
-                    flex={1}
-                    value={passcode}
+            <View style={{alignItems: 'center',
+                justifyContent: 'center',
+                padding: 20}}>
+                <FlatList
+                    data={ keebDataSource }
+                    renderItem={({ item }) => (
+                        <View style={{ flex: 1, flexDirection: 'column', margin: 10 }}>
+                            <Button 
+                                title={item.char}
+                                onPress={() => {
+                                    if (passcodeRef.current.length < 5) {
+                                        passcodeRef.current += item.char;
+                                        setPasscodeState(passcodeRef.current);
+                                    }
+                                }}
+                            />
+                        </View>
+                    )}
+                    numColumns={9}
                 />
+                <View
+                    style={{flexDirection:"row", marginTop: 20, marginBottom: 15}}
+                    >
+                    <TextInput
+                        style={{ height: 40}}
+                        placeholder="passcode"
+                        flex={1}
+                        value={passcodeRef.current}
+                    />
+                    <Button
+                        title="<-"
+                        flex={.2}
+                        onPress={() => {
+                            if (passcodeRef.current.length > 0) {
+                                passcodeRef.current = passcodeRef.current.slice(0, -1);
+                                setPasscodeState(passcodeRef.current);
+                            }
+                        }}
+                    />
+                </View>
                 <Button
-                    title="<-"
-                    flex={.2}
-                    onPress={() => {
-                        if (passcode.length > 0) {
-                            passcode = passcode.slice(0, -1);
-                        }
-                        setPasscode(passcode)
-                    }}
+                    title="login"
+                    onPress={() => setUser(true)}
                 />
             </View>
-            <Button
-                title="login"
-                onPress={() => setUser(true)}
-            />
         </View>
     );
 };
