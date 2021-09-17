@@ -8,7 +8,7 @@ Dependencies to install:
 
 * nodeJS 
 * npm
-* expo cli
+* expo cli (https://docs.expo.dev/workflow/expo-cli/)
 * Android Studio (Recommended not required yet)
 * Xcode (mac only)
 
