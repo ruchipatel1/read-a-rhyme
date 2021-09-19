@@ -13,6 +13,12 @@ Dependencies to install:
 * Xcode (mac only)
 
 cd into the read-a-rhyme-reactnative directory and run
+
+first time:
 ````
-$ npm run web
+npm install
+````
+
+````
+npm run web
 ````
