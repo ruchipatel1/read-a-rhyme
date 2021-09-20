@@ -10,7 +10,7 @@ Dependencies to install:
 * npm (https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 * expo cli (https://docs.expo.dev/workflow/expo-cli/)
 * Android Studio (Recommended not required yet)
-* Xcode (mac only)
+* Xcode (mac only / found in app store)
 
 cd into the read-a-rhyme-reactnative directory and run
 
