@@ -8,7 +8,7 @@ export const ReadingScreen = () => {
 
     <View style={styles.container}>
         <View style={styles.row}>
-            <TouchableHighlight onPress={this.alert(null)} underlayColor="lightblue">
+            <TouchableHighlight onPress={null} underlayColor="lightblue">
                 <View style={styles.reading}>
                     <Text style={styles.readingText}>Reading 1</Text>
                 </View>
