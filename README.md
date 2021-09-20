@@ -14,11 +14,11 @@ Dependencies to install:
 
 cd into the read-a-rhyme-reactnative directory and run
 
-first time:
-````
-npm install
-````
-----------
 ````
 npm run web
+````
+----------
+if first time, run 
+````
+npm install
 ````
