@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 20
     },    
-    reading: {
+    book: {
         height: 300,
         width: 200,
         borderRadius: 5,
@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
         marginRight: 20
 
     },
-    readingText: {
+    bookTitle: {
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#cccccc",
