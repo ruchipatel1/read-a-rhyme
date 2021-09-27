@@ -1,15 +1,13 @@
 import React from 'react';
 import { Text, View , Image } from 'react-native';
-import { isRequired } from 'react-native/Libraries/DeprecatedPropTypes/DeprecatedColorPropType';
 import { styles } from '../Styles';
-import Image1 from '../pictures/mary.jpg'
 
 
-const Book = (props) => {
+const Book = (title, image) => {
     return (
         <View style = {styles.book}>
-            <Text style={styles.readingText}> {props.title} </Text>
-            <img src={Image1}/>
+            <Text style={styles.readingText}> {title.toString()} </Text>
+            <Image source={image} />
         </View>
     )
 }
