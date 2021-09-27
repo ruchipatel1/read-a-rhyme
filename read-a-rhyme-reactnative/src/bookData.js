@@ -1,6 +1,8 @@
+const baseUrl = "read-a-rhyme/read-a-rhyme-reactnative/src/pictures";
+
 export const bookData = [
     {
         title: "Mary had a little lamb",
-        image: "../pictures/mary.jpg",
+        image: baseUrl + "/mary.jpg",
     }
-]
+];
