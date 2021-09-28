@@ -1,14 +1,14 @@
 import React from 'react';
-import { Text, View , Image } from 'react-native';
+import { Text, View , TouchableHighlight, Image } from 'react-native';
 import { styles } from '../Styles';
 
-
-const Book = (title, image) => {
+const Book = (props) => {
     return (
         <View style = {styles.book}>
-            <Text style={styles.readingText}> {title.toString()} </Text>
-            <Image source={image} />
+            <Text style={styles.readingText}> {props.title} </Text>
+            <Image source={props.image} style={{ width: 150, height: 200 }} />
         </View>
+        
     )
 }
 
