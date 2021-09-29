@@ -6,13 +6,19 @@ A literacy app to help schoolchildren learn to read.
 
 Dependencies to install:
 
-* nodeJS 
-* npm
-* expo cli
+* nodeJS (https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+* npm (https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+* expo cli (https://docs.expo.dev/workflow/expo-cli/)
 * Android Studio (Recommended not required yet)
-* Xcode (mac only)
+* Xcode (mac only / found in app store)
 
 cd into the read-a-rhyme-reactnative directory and run
+
 ````
-$ npm run web
+npm run web
+````
+----------
+if first time, run 
+````
+npm install
 ````
