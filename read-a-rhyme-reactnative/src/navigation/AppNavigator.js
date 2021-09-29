@@ -6,6 +6,7 @@ import {ShopScreen} from "../screens/ShopScreen";
 import {ReadingScreen} from "../screens/ReadingScreen";
 import {AuthContext} from "./AuthContext";
 import {LoginScreen} from "../screens/LoginScreen";
+import { ListeningModeScreen } from "../screens/ListeningModeScreen";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -19,6 +20,7 @@ export const AppNavigator = () => {
                 <Drawer.Screen name="User Dashboard" component={UserDashboardScreen} />
                 <Drawer.Screen name="Shop" component={ShopScreen} />
                 <Drawer.Screen name="Reading" component={ReadingScreen} />
+                <Drawer.Screen name="Listening" component={ListeningModeScreen} />
             </Drawer.Navigator>
         );
     } else {
@@ -28,6 +30,4 @@ export const AppNavigator = () => {
             </Stack.Navigator>
         )
     }
-
-
 };
