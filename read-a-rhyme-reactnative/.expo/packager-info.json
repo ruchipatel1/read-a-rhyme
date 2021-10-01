@@ -4,7 +4,7 @@
   "packagerPort": null,
   "webpackServerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://jf-5u8.malhasso.read-a-rhyme-reactnative.exp.direct",
+  "packagerNgrokUrl": "https://packager.jf-5u8.malhasso.read-a-rhyme-reactnative.exp.direct",
+  "ngrokPid": 16048
 }
