@@ -20,7 +20,11 @@ export const AppNavigator = () => {
                 <Drawer.Screen name="User Dashboard" component={UserDashboardScreen} />
                 <Drawer.Screen name="Shop" component={ShopScreen} />
                 <Drawer.Screen name="Reading" component={ReadingScreen} />
-                <Drawer.Screen name="Listening" component={ListeningModeScreen} />
+                <Drawer.Screen name="Listening" component={ListeningModeScreen} options={{
+                drawerLabel: () => null,
+                title: null,
+                drawerIcon: () => null
+                }}/>
             </Drawer.Navigator>
         );
     } else {

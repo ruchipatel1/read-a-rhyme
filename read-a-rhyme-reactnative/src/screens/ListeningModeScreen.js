@@ -1,10 +1,35 @@
-import React from "react";
-import { View, Text, Image } from "react-native";
+import React, {useEffect, useState} from "react";
+import { View, Text, Image, Pressable } from "react-native";
 import { bookData } from '../bookData';
+import { Audio } from 'expo-av';
 
 export const ListeningModeScreen = (props) => {
-    console.log(props.route.params.book);
     const book = props.route.params.book;
+    const [sound, setSound] = useState(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    useEffect(() => {
+        async function createSound() {
+            const { sound } = await Audio.Sound.createAsync(
+                book.audio
+            );
+            setSound(sound);
+        }
+        createSound();
+    }, []);
+
+    async function playSound() {
+        
+        if (!isPlaying) {
+            sound.playAsync();
+            setIsPlaying(true);
+        } else {
+            sound.pauseAsync();
+            setIsPlaying(false);
+        }
+              
+    }
+    
     return (
         <View>
             <Text>{book.title}</Text>
@@ -14,6 +39,9 @@ export const ListeningModeScreen = (props) => {
             <View>
                 <Text>{book.text}</Text>
             </View>
+            <Pressable onPress={() => playSound()}>
+                <Text>Play/Pause</Text>
+            </Pressable>
         </View>
     )
 }

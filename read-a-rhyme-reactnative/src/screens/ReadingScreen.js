@@ -30,7 +30,11 @@ export const ReadingScreen = () => {
         <Modal
             animationType="slide"
             transparent={true}
-            visible={modeVisible}>
+            visible={modeVisible}
+            onRequestClose={() => {
+                Alert.alert("r u sure");
+                setModalVisible(!modalVisible);
+              }}>
             <View style={styles.centeredView}>
                 <View style={styles.modeSelectionView}>
                     <Text>Choose your mode:</Text>
