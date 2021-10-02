@@ -13,10 +13,10 @@ export const ReadingScreen = () => {
     const [selectedBook, setSelectedBook] = useState(null);
     const nav = useNavigation();
 
-    function closeAndNavigateToReading(book){
+    function closeAndNavigateToReading(book, readingType){
         setModeVisible(!modeVisible);
         console.log(book);
-        nav.navigate('Listening', {book});
+        nav.navigate('Listening', {book, readingType});
     }
 
     function openReadingMode(book){
@@ -40,13 +40,13 @@ export const ReadingScreen = () => {
                     <Text>Choose your mode:</Text>
                     <Pressable
                         style={[styles.button, styles.buttonClose]}
-                        onPress={() => closeAndNavigateToReading(selectedBook)}
+                        onPress={() => closeAndNavigateToReading(selectedBook, 0)}
                     >
                         <Text style={styles.textStyle}>Listening</Text>
                     </Pressable>
                     <Pressable
                         style={[styles.button, styles.buttonClose]}
-                        onPress={() => setModeVisible(!modeVisible)}
+                        onPress={() => closeAndNavigateToReading(selectedBook, 1)}
                     >
                         <Text style={styles.textStyle}>Reading</Text>
                     </Pressable>
