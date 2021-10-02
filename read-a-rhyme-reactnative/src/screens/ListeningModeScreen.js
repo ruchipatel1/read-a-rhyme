@@ -11,7 +11,7 @@ export const ListeningModeScreen = (props) => {
 
     function punctuation(str) {
         if (str != undefined) {
-            if (str.search(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g) != -1) {
+            if (str.search(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~\n]/g) != -1) {
                 return("");
             } else {
                 return(" ");
@@ -20,7 +20,7 @@ export const ListeningModeScreen = (props) => {
     }
 
     function generateTouchableWords() {
-        let words = book.text.match(/\b(\w+)\b|[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g);
+        let words = book.text.match(/\b(\w+)\b|[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~\n]/g);
         let x = [];
         for (let i = 0; i < words.length; i++) {
             if (audioWords.includes(words[i].toLowerCase())) {
