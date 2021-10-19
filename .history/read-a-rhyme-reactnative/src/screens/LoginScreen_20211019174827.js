@@ -1,5 +1,5 @@
 import React, {useContext, useState, useRef} from "react";
-import { Button, Text, SafeAreaView, View, TextInput, FlatList} from "react-native";
+import { Button, Text, View, TextInput, FlatList} from "react-native";
 import {AuthContext} from "../navigation/AuthContext";
 import {styles} from "../Styles";
 
@@ -11,6 +11,7 @@ export const LoginScreen = () => {
     // Need to update a state variable to force rerender in functional component
     var [passcodeState, setPasscodeState] = useState("");
 
+    keyboardData = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9'];
 
     // Generate Data passed to Keyboard FlatList, i.e. A-Z,0-9. 
     useState(() => {
@@ -23,21 +24,19 @@ export const LoginScreen = () => {
             };
             return { id: i, char: character };
         });
-        setKeebDataSource(items);
+        setKeebDataSource(keyboardData);
     }, []);
 
     return (
         <View style={styles.container}>
+            <Text>Login</Text>
             <View style={{alignItems: 'center',
                 justifyContent: 'center',
-                marginVertical: 15,
-                paddingVertical: 10,
-                padding: 5}}>
-                <Text style={{ marginBottom: 10, fontSize: 24 }}>Login</Text>
+                padding: 20}}>
                 <FlatList
                     data={ keebDataSource }
                     renderItem={({ item }) => (
-                        <View style={{margin: 5 }}>
+                        <View style={{ flex: 1, flexDirection: 'column', margin: 10 }}>
                             <Button 
                                 title={item.char}
                                 onPress={() => {
@@ -52,7 +51,7 @@ export const LoginScreen = () => {
                     numColumns={9}
                 />
                 <View
-                    style={{padding: 15, flexDirection:"row", marginBottom: 15}}
+                    style={{flexDirection:"row", marginTop: 20, marginBottom: 15}}
                     >
                     <TextInput
                         style={{ height: 40}}

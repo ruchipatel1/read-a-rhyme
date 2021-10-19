@@ -1,58 +1,38 @@
 import React, {useContext, useState, useRef} from "react";
-import { Button, Text, SafeAreaView, View, TextInput, FlatList} from "react-native";
+import { Button, Text, View, SafeAreaView, TextInput, FlatList} from "react-native";
 import {AuthContext} from "../navigation/AuthContext";
 import {styles} from "../Styles";
 
 export const LoginScreen = () => {
     const { setUser } = useContext(AuthContext);
-    const [keebDataSource, setKeebDataSource] = useState([]);
+    //const [keebDataSource, setKeebDataSource] = useState([]);
     // Passcode is stored in here
     const passcodeRef = useRef("")
     // Need to update a state variable to force rerender in functional component
     var [passcodeState, setPasscodeState] = useState("");
 
+    const KEEB = [{ id: 0, char: 'A' }, { id: 1, char: 'B' }, { id: 2, char: 'C' }, { id: 3, char: 'D' }, { id: 4, char: 'E' }, { id: 5, char: 'F' }, { id: 6, char: 'G' }, { id: 7, char: 'H' }, { id: 8, char: 'I' }, { id: 9, char: 'J' }, { id: 10, char: 'K' }, { id: 11, char: 'L' }, { id: 12, char: 'M' }, { id: 13, char: 'N' }, { id: 14, char: 'O' }, { id: 16, char: 'P' }, { id: 17, char: 'Q' }, { id: 18, char: 'R' }, { id: 19, char: 'S' }, { id: 20, char: 'T' }, { id: 21, char: 'U' }, { id: 22, char: 'V' }, { id: 23, char: 'W' }, { id: 24, char: 'X' }, { id: 25, char: 'Y' }, { id: 26, char: 'Z' }, { id: 27, char: '0' }, { id: 28, char: '1' }, { id: 29, char: '2' }, { id: 30, char: '3' }, { id: 31, char: '4' }, { id: 32, char: '5' }, { id: 33, char: '6' }, { id: 34, char: '7' }, { id: 35, char: '8' }, { id: 36, char: '9'}];
 
-    // Generate Data passed to Keyboard FlatList, i.e. A-Z,0-9. 
-    useState(() => {
-        let items = Array.apply(null, Array(36)).map((v, i) => {
-            let character = "0";
-            if (i < 26) {
-                character = String.fromCharCode(65 + i);
-            } else {
-                character = String.fromCharCode(22 + i);
-            };
-            return { id: i, char: character };
-        });
-        setKeebDataSource(items);
-    }, []);
+    const renderItem = ({ item }) => (
+        <SafeAreaView style={{ flex: 1, flexDirection: 'column', margin: 10 }}>
+            <Text>{item.char}</Text>
+        </SafeAreaView>
+    );
 
     return (
         <View style={styles.container}>
+            <Text>Login</Text>
             <View style={{alignItems: 'center',
                 justifyContent: 'center',
-                marginVertical: 15,
-                paddingVertical: 10,
-                padding: 5}}>
-                <Text style={{ marginBottom: 10, fontSize: 24 }}>Login</Text>
+                padding: 20}}>
                 <FlatList
-                    data={ keebDataSource }
-                    renderItem={({ item }) => (
-                        <View style={{margin: 5 }}>
-                            <Button 
-                                title={item.char}
-                                onPress={() => {
-                                    if (passcodeRef.current.length < 5) {
-                                        passcodeRef.current += item.char;
-                                        setPasscodeState(passcodeRef.current);
-                                    }
-                                }}
-                            />
-                        </View>
-                    )}
+                    data={KEEB}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
                     numColumns={9}
                 />
                 <View
-                    style={{padding: 15, flexDirection:"row", marginBottom: 15}}
+                    style={{flexDirection:"row", marginTop: 20, marginBottom: 15}}
                     >
                     <TextInput
                         style={{ height: 40}}
