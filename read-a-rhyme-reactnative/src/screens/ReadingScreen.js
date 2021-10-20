@@ -15,8 +15,12 @@ export const ReadingScreen = () => {
 
     function closeAndNavigateToReading(book, readingType){
         setModeVisible(!modeVisible);
-        console.log(book);
         nav.navigate('Listening', {book, readingType});
+    }
+
+    function closeAndNavigateToQuiz(book){
+        setModeVisible(!modeVisible);
+        nav.navigate('Quiz');
     }
 
     function openReadingMode(book){
@@ -49,6 +53,12 @@ export const ReadingScreen = () => {
                         onPress={() => closeAndNavigateToReading(selectedBook, 1)}
                     >
                         <Text style={styles.textStyle}>Reading</Text>
+                    </Pressable>
+                    <Pressable
+                        style={[styles.button, styles.buttonClose]}
+                        onPress={() => closeAndNavigateToQuiz(selectedBook)}
+                    >
+                        <Text style={styles.textStyle}>Quiz</Text>
                     </Pressable>
                 </View>
             </View>
