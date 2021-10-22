@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import {Text, View, Button, TouchableHighlight, Modal, Pressable} from "react-native";
+import {Text, View, Button, ScrollView, TouchableHighlight, Modal, Pressable} from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import {styles} from "../Styles";
 import Book from "../components/book";
 import { bookData } from '../bookData';
 import { ListeningModeScreen } from "./ListeningModeScreen";
 
-export const ReadingScreen = () => {
+export const LibraryScreen = () => {
     // const [books, updateBooks] = useState([]);
     const [modeVisible, setModeVisible] = useState(false);
     const [libraryVisible, setLibraryVisible] = useState(false);
@@ -79,16 +79,16 @@ export const ReadingScreen = () => {
                 </View>
             </View>
         </Modal>
-        <View style={styles.container}>
+        <ScrollView style={{margin: 10}}>
             <View style={styles.row}>
                 <TouchableHighlight onPress={()=>openReadingMode(bookData[0])}>
-                    <Book title={bookData[0].title} image={bookData[0].image}></Book>
+                    <Book style={{flex: 1}} title={bookData[0].title} image={bookData[0].image}></Book>
                 </TouchableHighlight>
                 <TouchableHighlight onPress={()=>openReadingMode(bookData[1])}>
-                    <Book title={bookData[1].title} image={bookData[1].image}></Book>
+                        <Book style={{ flex: 1 }} title={bookData[1].title} image={bookData[1].image}></Book>
                 </TouchableHighlight>  
                 <TouchableHighlight onPress={()=>openReadingMode(bookData[2])}>
-                    <Book title={bookData[2].title} image={bookData[2].image}></Book>
+                        <Book style={{ flex: 1 }} title={bookData[2].title} image={bookData[2].image}></Book>
                 </TouchableHighlight>              
                 <TouchableHighlight onPress={()=>setLibraryVisible(true)}>
                     <View style = {styles.book}>
@@ -97,7 +97,7 @@ export const ReadingScreen = () => {
                     </View>
                 </TouchableHighlight>
             </View>
-        </View>
+        </ScrollView>
     </View>
     );
 }

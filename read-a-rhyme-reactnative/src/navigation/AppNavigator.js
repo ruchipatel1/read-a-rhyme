@@ -3,11 +3,11 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import {UserDashboardScreen} from "../screens/UserDashboardScreen";
 import {ShopScreen} from "../screens/ShopScreen";
-import {ReadingScreen} from "../screens/ReadingScreen";
 import {AuthContext} from "./AuthContext";
 import {LoginScreen} from "../screens/LoginScreen";
 import { ListeningModeScreen } from "../screens/ListeningModeScreen";
 import { QuizModeScreen } from "../screens/QuizModeScreen";
+import { LibraryScreen } from "../screens/LibraryScreen";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -20,7 +20,7 @@ export const AppNavigator = () => {
             <Drawer.Navigator>
                 <Drawer.Screen name="User Dashboard" component={UserDashboardScreen} />
                 <Drawer.Screen name="Shop" component={ShopScreen} />
-                <Drawer.Screen name="Reading" component={ReadingScreen} />
+                <Drawer.Screen name="Library" component={LibraryScreen} />
                 <Drawer.Screen name="Listening" component={ListeningModeScreen} options={{
                 drawerLabel: () => null,
                 title: null,
