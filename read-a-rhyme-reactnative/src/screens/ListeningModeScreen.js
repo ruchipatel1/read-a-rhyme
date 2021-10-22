@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { View, Text, Image, Pressable } from "react-native";
-import { bookData } from '../bookData';
 import { Audio } from 'expo-av';
+import HighlightedWord from "../components/HighlightedWord";
 
 export const ListeningModeScreen = (props) => {
     const book = props.route.params.book;
@@ -19,7 +19,7 @@ export const ListeningModeScreen = (props) => {
     }, []);
 
     async function playSound() {
-        
+
         if (!isPlaying) {
             sound.playAsync();
             setIsPlaying(true);
@@ -27,14 +27,16 @@ export const ListeningModeScreen = (props) => {
             sound.pauseAsync();
             setIsPlaying(false);
         }
-              
+
     }
-    
+
+
+
     const readingType = props.route.params.readingType;
 
     //let audioWords = ["mary", "had"];
     const wordList = require('../../assets/audio/words.json');
-    console.log(wordList[0]);
+    //console.log(wordList[0]);
     //audioWords = JSON.parse(wordList);
 
     function punctuation(str) {
@@ -52,7 +54,7 @@ export const ListeningModeScreen = (props) => {
         let x = [];
         for (let i = 0; i < words.length; i++) {
             if (wordList.includes(words[i].toLowerCase())) {
-                x.push(<Text key={"Key_" + i} style={{color:'red'}}>{words[i]}{punctuation(words[i + 1])}</Text>);
+                x.push(<HighlightedWord word={words[i]} punctuation={punctuation(words[i + 1])} key={"Key_" + i} audio={"../../assets/audio/words/acrobat.mp3"}/>);
             } else {
                 x.push(<Text key={"Key_" + i}>{words[i]}{punctuation(words[i + 1])}</Text> )
             }
