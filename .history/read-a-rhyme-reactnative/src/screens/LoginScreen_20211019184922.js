@@ -1,5 +1,5 @@
 import React, {useContext, useState, useRef} from "react";
-import { Button, Text, SafeAreaView, View, TextInput, FlatList} from "react-native";
+import { Button, Text, View, TextInput, FlatList} from "react-native";
 import {AuthContext} from "../navigation/AuthContext";
 import {styles} from "../Styles";
 
@@ -28,12 +28,11 @@ export const LoginScreen = () => {
 
     return (
         <View style={styles.container}>
+            <Text>Login</Text>
             <View style={{alignItems: 'center',
                 justifyContent: 'center',
-                marginVertical: 15,
-                paddingVertical: 10,
+                marginVertical: 10
                 padding: 5}}>
-                <Text style={{ marginBottom: 10, fontSize: 24 }}>Login</Text>
                 <FlatList
                     data={ keebDataSource }
                     renderItem={({ item }) => (
@@ -52,7 +51,7 @@ export const LoginScreen = () => {
                     numColumns={9}
                 />
                 <View
-                    style={{padding: 15, flexDirection:"row", marginBottom: 15}}
+                    style={{padding: 15, flexDirection:"row", marginTop: 20, marginBottom: 15}}
                     >
                     <TextInput
                         style={{ height: 40}}

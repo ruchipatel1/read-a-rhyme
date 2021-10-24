@@ -7,7 +7,6 @@ import {ReadingScreen} from "../screens/ReadingScreen";
 import {AuthContext} from "./AuthContext";
 import {LoginScreen} from "../screens/LoginScreen";
 import { ListeningModeScreen } from "../screens/ListeningModeScreen";
-import { QuizModeScreen } from "../screens/QuizModeScreen";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -26,17 +25,12 @@ export const AppNavigator = () => {
                 title: null,
                 drawerIcon: () => null
                 }}/>
-                <Drawer.Screen name="Quiz" component={QuizModeScreen} options={{
-                drawerLabel: () => null,
-                title: null,
-                drawerIcon: () => null
-                }}/>
             </Drawer.Navigator>
         );
     } else {
         return (
             <Stack.Navigator>
-                <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}}/>
+                <Stack.Screen name="Login" component={LoginScreen} options={{headeShown: false}}/>
             </Stack.Navigator>
         )
     }

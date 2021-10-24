@@ -30,10 +30,10 @@ export const LoginScreen = () => {
         <View style={styles.container}>
             <View style={{alignItems: 'center',
                 justifyContent: 'center',
-                marginVertical: 15,
+                marginVertical: 50,
                 paddingVertical: 10,
                 padding: 5}}>
-                <Text style={{ marginBottom: 10, fontSize: 24 }}>Login</Text>
+                <Text style={{ marginTop: 10, fontSize: 24 }}>Login</Text>
                 <FlatList
                     data={ keebDataSource }
                     renderItem={({ item }) => (

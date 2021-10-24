@@ -30,7 +30,7 @@ export const LoginScreen = () => {
         <View style={styles.container}>
             <View style={{alignItems: 'center',
                 justifyContent: 'center',
-                marginVertical: 15,
+                marginVertical: 30,
                 paddingVertical: 10,
                 padding: 5}}>
                 <Text style={{ marginBottom: 10, fontSize: 24 }}>Login</Text>
