@@ -1,5 +1,5 @@
 import React, {useContext, useState, useRef} from "react";
-import { Button, Text, SafeAreaView, View, TextInput, FlatList} from "react-native";
+import { Button, Text, View, TextInput, FlatList} from "react-native";
 import {AuthContext} from "../navigation/AuthContext";
 import {styles} from "../Styles";
 
@@ -14,7 +14,7 @@ export const LoginScreen = () => {
 
     // Generate Data passed to Keyboard FlatList, i.e. A-Z,0-9. 
     useState(() => {
-        let items = Array.apply(null, Array(36)).map((v, i) => {
+        let keebData = Array.apply(null, Array(36)).map((v, i) => {
             let character = "0";
             if (i < 26) {
                 character = String.fromCharCode(65 + i);
@@ -23,21 +23,19 @@ export const LoginScreen = () => {
             };
             return { id: i, char: character };
         });
-        setKeebDataSource(items);
+        setKeebDataSource(keebData);
     }, []);
 
     return (
         <View style={styles.container}>
+            <Text>Login</Text>
             <View style={{alignItems: 'center',
                 justifyContent: 'center',
-                marginVertical: 15,
-                paddingVertical: 10,
-                padding: 5}}>
-                <Text style={{ marginBottom: 10, fontSize: 24 }}>Login</Text>
+                padding: 20}}>
                 <FlatList
                     data={ keebDataSource }
                     renderItem={({ item }) => (
-                        <View style={{margin: 5 }}>
+                        <View style={{ flex: 1, flexDirection: 'column', margin: 10 }}>
                             <Button 
                                 title={item.char}
                                 onPress={() => {
@@ -52,7 +50,7 @@ export const LoginScreen = () => {
                     numColumns={9}
                 />
                 <View
-                    style={{padding: 15, flexDirection:"row", marginBottom: 15}}
+                    style={{flexDirection:"row", marginTop: 20, marginBottom: 15}}
                     >
                     <TextInput
                         style={{ height: 40}}
