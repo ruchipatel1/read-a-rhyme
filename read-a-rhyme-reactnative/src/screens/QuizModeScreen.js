@@ -16,6 +16,7 @@ export const QuizModeScreen = () => {
     const wordMap = new Map([[lamb, 'lamb'], [snow, 'snow'], [and, 'and'], [teacher, 'teacher']]);
     const [wordArray, setWordArray] = useState([lamb, snow, and, teacher]);
     const [word, setWord] = useState(null);
+    const [numberIncorrect, setNumberIncorrect] = useState(0);
     const [numberCorrect, setNumberCorrect] = useState(0);
     const [completedQuizModal, setCompletedQuizModal] = useState(false);
     const [incorrectModal, setIncorrectModal] = useState(false);
@@ -39,6 +40,8 @@ export const QuizModeScreen = () => {
     }
     
     useEffect(() => {
+        setNumberIncorrect(0);
+        setNumberCorrect(0);
         generateQuizQuestion();
     }, []);
 
@@ -46,12 +49,19 @@ export const QuizModeScreen = () => {
     function answerCheck(wordPressed) {
         if (wordMap.get(wordPressed) == wordMap.get(word)) {
             generateQuizQuestion();
+            setNumberCorrect(() => {
+                return numberCorrect+1;
+            });
+            setNumberIncorrect(0);
         } else {
+            setNumberIncorrect(() => {
+                return numberIncorrect+1;
+            })
+            if (numberIncorrect == 2) {
+                generateQuizQuestion();
+            }
             setIncorrectModal(true);
         }
-        setNumberCorrect(() => {
-            return numberCorrect+1;
-        });
         if (numberCorrect == 5) {
             setCompletedQuizModal(true)
         }
