@@ -20,7 +20,7 @@ export const ReadingScreen = () => {
 
     function closeAndNavigateToQuiz(book){
         setModeVisible(!modeVisible);
-        nav.navigate('Quiz');
+        nav.navigate('Quiz', {book});
     }
 
     function openReadingMode(book){
