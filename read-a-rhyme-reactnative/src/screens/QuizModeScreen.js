@@ -65,7 +65,6 @@ export const QuizModeScreen = (props) => {
             });
             setGoldCoins(goldCoins + 1);
             setPayload([...payload, true]);
-            console.log(payload);
             setNumberIncorrect(0);
         } else {
             setNumberIncorrect(() => {
