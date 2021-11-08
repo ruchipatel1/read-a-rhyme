@@ -3,26 +3,47 @@ import { View, Text, Image, Pressable, Modal } from "react-native";
 import { Audio } from 'expo-av';
 import {styles} from "../Styles";
 import {useNavigation} from '@react-navigation/native';
-import snow from '../../assets/audio/words/snow.mp3'
-import lamb from '../../assets/audio/words/lamb.mp3'
-import and from '../../assets/audio/words/and.mp3'
-import teacher from '../../assets/audio/words/teacher.mp3'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const QuizModeScreen = () => {
-    //const book = props.route.params.book;
+export const QuizModeScreen = (props) => {
+    const quizType = props.route.params.quizType
+    const book = props.route.params.book;
+    const quizWord = props.route.params.word;
     
-    const wordList = [snow, lamb, and, teacher];
+    const wordList = book.wordList;
     const [sound, setSound] = useState(null);
-    const wordMap = new Map([[lamb, 'lamb'], [snow, 'snow'], [and, 'and'], [teacher, 'teacher']]);
-    const [wordArray, setWordArray] = useState([lamb, snow, and, teacher]);
+    const wordMap = book.words;
+    const [wordArray, setWordArray] = useState(wordList);
     const [word, setWord] = useState(null);
+    const [numberIncorrect, setNumberIncorrect] = useState(0);
     const [numberCorrect, setNumberCorrect] = useState(0);
     const [completedQuizModal, setCompletedQuizModal] = useState(false);
+    const [correctModal, setCorrectModal] = useState(false);
     const [incorrectModal, setIncorrectModal] = useState(false);
     const nav = useNavigation();
+    const [payload, setPayload] = useState([]);
+
+    const getCoins = async () => {
+        const coins = await AsyncStorage.getItem('goldCoins');
+        return parseInt(coins);
+    }
+    const [goldCoins, setGoldCoins] = useState(getCoins);
+
+    const updateUserCoins = async () => {
+        await AsyncStorage.setItem('goldCoins', JSON.stringify(goldCoins));
+    }
+
 
     function pickWord() {
-        return wordArray[Math.floor(Math.random() * wordArray.length)]
+        if (quizType) {
+            for (let [key, value] of wordMap.entries()) {
+                if (value === quizWord)
+                  return key;
+            }
+        } else {
+            return wordArray[Math.floor(Math.random() * wordArray.length)];
+        }
+        
     }
 
     function generateQuizQuestion() {
@@ -39,27 +60,50 @@ export const QuizModeScreen = () => {
     }
     
     useEffect(() => {
+        setGoldCoins(0);
+        setNumberIncorrect(0);
+        setNumberCorrect(0);
         generateQuizQuestion();
+        setPayload([])
     }, []);
 
 
     function answerCheck(wordPressed) {
         if (wordMap.get(wordPressed) == wordMap.get(word)) {
-            generateQuizQuestion();
+            setNumberCorrect(() => {
+                return numberCorrect+1;
+            });
+            setGoldCoins(goldCoins + 1);
+            setPayload([...payload, true]);
+            setNumberIncorrect(0);
+            setCorrectModal(true);
         } else {
+            setNumberIncorrect(() => {
+                return numberIncorrect+1;
+            })
+            if (numberIncorrect == 2) {
+                setPayload([...payload, false]);
+                generateQuizQuestion();
+            }
             setIncorrectModal(true);
         }
-        setNumberCorrect(() => {
-            return numberCorrect+1;
-        });
         if (numberCorrect == 5) {
+            console.log(payload);
+            updateUserCoins(goldCoins);
+            console.log(goldCoins)
             setCompletedQuizModal(true)
+            setPayload([]);
         }
     }
 
     function navigateToLibrary() {
         setCompletedQuizModal(!completedQuizModal);
         nav.navigate('Reading');
+    }
+
+    function closeCorrectModal() {
+        setCorrectModal(false);
+        generateQuizQuestion();
     }
 
 
@@ -80,6 +124,24 @@ export const QuizModeScreen = () => {
                         onPress={() => navigateToLibrary()}
                     >
                         <Text style={styles.textStyle}>Go back to library!</Text>
+                    </Pressable>
+            </View>
+        </Modal>
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={correctModal}
+            onRequestClose={() => {
+                Alert.alert("r u sure");
+                setModalVisible(!correctModal);
+              }}>
+            <View style={styles.centeredView}>
+                <Text>Nice job!</Text>
+                <Pressable
+                        style={[styles.button, styles.buttonClose]}
+                        onPress={() => closeCorrectModal()}
+                    >
+                        <Text style={styles.textStyle}>Next</Text>
                     </Pressable>
             </View>
         </Modal>
