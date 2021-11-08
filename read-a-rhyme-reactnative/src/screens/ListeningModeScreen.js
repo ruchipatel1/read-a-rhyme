@@ -30,8 +30,6 @@ export const ListeningModeScreen = (props) => {
 
     }
 
-
-
     const readingType = props.route.params.readingType;
 
     //let audioWords = ["mary", "had"];
@@ -51,10 +49,11 @@ export const ListeningModeScreen = (props) => {
 
     function generateTouchableWords() {
         let words = book.text.match(/\b(\w+)\b|[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~\n]/g);
+        console.log(words);
         let x = [];
         for (let i = 0; i < words.length; i++) {
             if (wordList.includes(words[i].toLowerCase())) {
-                x.push(<HighlightedWord word={words[i]} punctuation={punctuation(words[i + 1])} key={"Key_" + i} audio={"../../assets/audio/words/acrobat.mp3"}/>);
+                x.push(<HighlightedWord word={words[i]} book={book} punctuation={punctuation(words[i + 1])} key={"Key_" + i} audio={"../../assets/audio/words/acrobat.mp3"}/>);
             } else {
                 x.push(<Text key={"Key_" + i}>{words[i]}{punctuation(words[i + 1])}</Text> )
             }

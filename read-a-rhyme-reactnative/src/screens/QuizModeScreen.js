@@ -6,7 +6,9 @@ import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const QuizModeScreen = (props) => {
+    const quizType = props.route.params.quizType
     const book = props.route.params.book;
+    const quizWord = props.route.params.word;
     
     const wordList = book.wordList;
     const [sound, setSound] = useState(null);
@@ -16,6 +18,7 @@ export const QuizModeScreen = (props) => {
     const [numberIncorrect, setNumberIncorrect] = useState(0);
     const [numberCorrect, setNumberCorrect] = useState(0);
     const [completedQuizModal, setCompletedQuizModal] = useState(false);
+    const [correctModal, setCorrectModal] = useState(false);
     const [incorrectModal, setIncorrectModal] = useState(false);
     const nav = useNavigation();
     const [payload, setPayload] = useState([]);
@@ -32,7 +35,15 @@ export const QuizModeScreen = (props) => {
 
 
     function pickWord() {
-        return wordArray[Math.floor(Math.random() * wordArray.length)]
+        if (quizType) {
+            for (let [key, value] of wordMap.entries()) {
+                if (value === quizWord)
+                  return key;
+            }
+        } else {
+            return wordArray[Math.floor(Math.random() * wordArray.length)];
+        }
+        
     }
 
     function generateQuizQuestion() {
@@ -59,13 +70,13 @@ export const QuizModeScreen = (props) => {
 
     function answerCheck(wordPressed) {
         if (wordMap.get(wordPressed) == wordMap.get(word)) {
-            generateQuizQuestion();
             setNumberCorrect(() => {
                 return numberCorrect+1;
             });
             setGoldCoins(goldCoins + 1);
             setPayload([...payload, true]);
             setNumberIncorrect(0);
+            setCorrectModal(true);
         } else {
             setNumberIncorrect(() => {
                 return numberIncorrect+1;
@@ -90,6 +101,11 @@ export const QuizModeScreen = (props) => {
         nav.navigate('Reading');
     }
 
+    function closeCorrectModal() {
+        setCorrectModal(false);
+        generateQuizQuestion();
+    }
+
 
     return (
         <View>
@@ -108,6 +124,24 @@ export const QuizModeScreen = (props) => {
                         onPress={() => navigateToLibrary()}
                     >
                         <Text style={styles.textStyle}>Go back to library!</Text>
+                    </Pressable>
+            </View>
+        </Modal>
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={correctModal}
+            onRequestClose={() => {
+                Alert.alert("r u sure");
+                setModalVisible(!correctModal);
+              }}>
+            <View style={styles.centeredView}>
+                <Text>Nice job!</Text>
+                <Pressable
+                        style={[styles.button, styles.buttonClose]}
+                        onPress={() => closeCorrectModal()}
+                    >
+                        <Text style={styles.textStyle}>Next</Text>
                     </Pressable>
             </View>
         </Modal>
