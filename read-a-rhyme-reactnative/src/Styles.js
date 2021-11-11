@@ -30,7 +30,6 @@ export const styles = StyleSheet.create({
         flexWrap: "wrap",
     },
     centeredView: {
-        flex: 1,
         justifyContent: "center",
         alignItems: "center",
         marginTop: 22
@@ -73,4 +72,22 @@ export const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5
     },
+    quizAnswer: {
+        alignSelf: 'stretch',
+        borderRadius: 20,
+        padding: 10,
+        backgroundColor: "#F194FF",
+        margin: 5
+    },
+    quizView: {
+        width: "100%",
+        justifyContent: 'center',
+        padding: 20
+    },
+    backButton: {
+        flex: 1,
+        width: 50,
+        height: 50,
+        resizeMode: 'contain'
+    }
 });

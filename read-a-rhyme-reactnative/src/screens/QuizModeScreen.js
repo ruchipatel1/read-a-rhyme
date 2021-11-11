@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
-import { View, Text, Image, Pressable, Modal } from "react-native";
+import { View, Text, Image, Pressable} from "react-native";
 import { Audio } from 'expo-av';
 import {styles} from "../Styles";
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Modal from "react-native-modal";
+import backButton from "../pictures/green-arrow.png";
 
 export const QuizModeScreen = (props) => {
     const quizType = props.route.params.quizType
@@ -97,7 +99,9 @@ export const QuizModeScreen = (props) => {
     }
 
     function navigateToLibrary() {
-        setCompletedQuizModal(!completedQuizModal);
+        if (completedQuizModal) {
+            setCompletedQuizModal(false);
+        }
         nav.navigate('Reading');
     }
 
@@ -108,15 +112,11 @@ export const QuizModeScreen = (props) => {
 
 
     return (
-        <View>
+        <View style={styles.centeredView}>
         <Modal
-            animationType="slide"
-            transparent={true}
-            visible={completedQuizModal}
-            onRequestClose={() => {
-                Alert.alert("r u sure");
-                setModalVisible(!completedQuizModal);
-              }}>
+            isVisible={completedQuizModal}
+            onBackdropPress={() => setCompletedQuizModal(false)}
+            >
             <View style={styles.centeredView}>
                 <Text>You've completed the quiz!</Text>
                 <Pressable
@@ -128,13 +128,8 @@ export const QuizModeScreen = (props) => {
             </View>
         </Modal>
         <Modal
-            animationType="slide"
-            transparent={true}
-            visible={correctModal}
-            onRequestClose={() => {
-                Alert.alert("r u sure");
-                setModalVisible(!correctModal);
-              }}>
+            isVisible={correctModal}
+            onBackdropPress={() => setCorrectModal(false)}>
             <View style={styles.centeredView}>
                 <Text>Nice job!</Text>
                 <Pressable
@@ -146,13 +141,8 @@ export const QuizModeScreen = (props) => {
             </View>
         </Modal>
         <Modal
-            animationType="slide"
-            transparent={true}
-            visible={incorrectModal}
-            onRequestClose={() => {
-                Alert.alert("r u sure");
-                setModalVisible(!incorrectModal);
-              }}>
+            isVisible={incorrectModal}
+            onBackdropPress={() => setIncorrectModal(false)}>
             <View style={styles.centeredView}>
                 <Text>Wrong, try again!</Text>
                 <Pressable
@@ -163,21 +153,28 @@ export const QuizModeScreen = (props) => {
                     </Pressable>
             </View>
         </Modal>
+        <View style={styles.backButton}>
+            <Pressable onPress={() => navigateToLibrary}>
+                <Image source={backButton}></Image>
+            </Pressable>
+        </View>
+            <View style={styles.quizView}>
             <Pressable onPress={() => sound.playAsync()}>
                 <Text>Play Word</Text>
             </Pressable>
-            <Pressable onPress={() => answerCheck(wordArray[0])}>
+            <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[0])}>
                 <Text>{wordMap.get(wordArray[0])}</Text>
             </Pressable>
-            <Pressable onPress={() => answerCheck(wordArray[1])}>
+            <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[1])}>
                 <Text>{wordMap.get(wordArray[1])}</Text>
             </Pressable>
-            <Pressable onPress={() => answerCheck(wordArray[2])}>
+            <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[2])}>
                 <Text>{wordMap.get(wordArray[2])}</Text>
             </Pressable>
-            <Pressable onPress={() => answerCheck(wordArray[3])}>
+            <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[3])}>
                 <Text>{wordMap.get(wordArray[3])}</Text>
             </Pressable> 
+            </View>
         </View>
     );
 
