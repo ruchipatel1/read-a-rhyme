@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { View, Text, Image, Pressable } from "react-native";
+import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import { Audio } from 'expo-av';
 import HighlightedWord from "../components/HighlightedWord";
 import {useNavigation} from '@react-navigation/native';
@@ -9,6 +9,20 @@ export const ListeningModeScreen = (props) => {
     const [sound, setSound] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const nav = useNavigation();
+
+    const styles = StyleSheet.create({
+        title: {
+            textAlign: "center",
+            fontWeight: 'bold',
+            fontSize: 25
+
+        },
+        bodyText: {
+            textAlign: "center",
+            fontSize: 15
+
+        }
+      });
 
     useEffect(() => {
         async function createSound() {
@@ -65,17 +79,17 @@ export const ListeningModeScreen = (props) => {
             }
         }
 
-        return(<Text>{x}</Text>);
+        return(<Text style={styles.bodyText}>{x}</Text>);
     }
 
     return (
         <View>
-            <Text>{book.title}</Text>
+            <Text style={styles.title}>{book.title}</Text>
             <View>
-            <Image source={book.image} style={{ width: 300, height: 400 }} />
+            <Image source={book.image} style={{ width: 300, height: 400}} />
             </View>
             <View>
-                {readingType ? generateTouchableWords() : <Text>{book.text}</Text>}
+                {readingType ? generateTouchableWords() : <Text style={styles.bodyText}>{book.text}</Text>}
             </View>
             {readingType ? null : 
                 <Pressable onPress={() => playSound()}>
@@ -87,4 +101,5 @@ export const ListeningModeScreen = (props) => {
             </Pressable>
         </View>
     )
+
 }

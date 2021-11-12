@@ -46,7 +46,7 @@ const HighlightedWord = (props) => {
                 </View>
             </Modal>
             <Text
-                style={{color:'red'}}
+                style={{color:'blue', fontWeight: "bold"}}
                 onPress={() => playWord(props.word).then()}
                 onLongPress={() => setPopupVisible(true)}
             >{props.word}{props.punctuation}
