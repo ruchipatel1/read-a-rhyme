@@ -73,12 +73,12 @@ export const ReadingScreen = () => {
                         <Text style={styles.textStyle}>Close</Text>
                     </Pressable>
                 </View>
-            </View>
+            </View>s
         </Modal>
         <View style={styles.container}>
             <View style={styles.row}>
                 {bookData.map((book, index) => {
-                    return <Pressable onPress={()=>openReadingMode(bookData[index])}>
+                    return <Pressable key={bookData[index].title} onPress={()=>openReadingMode(bookData[index])}>
                     <Book title={bookData[index].title} image={bookData[index].image}></Book>
                 </Pressable>
                 })}

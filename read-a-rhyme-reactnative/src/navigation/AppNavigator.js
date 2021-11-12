@@ -17,21 +17,12 @@ export const AppNavigator = () => {
 
     if(hasUser) {
         return (
-            <Drawer.Navigator>
-                <Drawer.Screen name="User Dashboard" component={UserDashboardScreen} />
-                <Drawer.Screen name="Shop" component={ShopScreen} />
-                <Drawer.Screen name="Reading" component={ReadingScreen} />
-                <Drawer.Screen name="Listening" component={ListeningModeScreen} options={{
-                drawerLabel: () => null,
-                title: null,
-                drawerIcon: () => null
-                }}/>
-                <Drawer.Screen name="Quiz" component={QuizModeScreen} options={{
-                drawerLabel: () => null,
-                title: null,
-                drawerIcon: () => null
-                }}/>
-            </Drawer.Navigator>
+            <Stack.Navigator>
+                <Stack.Screen name="Reading" component={ReadingScreen} />
+                <Stack.Screen name="Shop" component={ShopScreen} />
+                <Stack.Screen name="Listening" component={ListeningModeScreen} options={{}}/>
+                <Stack.Screen name="Quiz" component={QuizModeScreen} options={{}}/>
+            </Stack.Navigator>
         );
     } else {
         return (
