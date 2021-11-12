@@ -2,11 +2,13 @@ import React, {useEffect, useState} from "react";
 import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import { Audio } from 'expo-av';
 import HighlightedWord from "../components/HighlightedWord";
+import {useNavigation} from '@react-navigation/native';
 
 export const ListeningModeScreen = (props) => {
     const book = props.route.params.book;
     const [sound, setSound] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const nav = useNavigation();
 
     const styles = StyleSheet.create({
         title: {
@@ -61,6 +63,10 @@ export const ListeningModeScreen = (props) => {
         }
     }
 
+    function navigateToLibrary() {
+        nav.navigate('Reading', null);
+    }
+
     function generateTouchableWords() {
         let words = book.text.match(/\b(\w+)\b|[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~\n]/g);
         console.log(words);
@@ -90,11 +96,9 @@ export const ListeningModeScreen = (props) => {
                     <Text>Play/Pause</Text>
                 </Pressable>
             }
-            {readingType ? null : 
-                <Pressable onPress={() => playSound()}>
-                    <Text>Return to Readings</Text>
-                </Pressable>
-            }
+            <Pressable onPress={() => navigateToLibrary()}>
+                <Text>Go back to library!</Text>
+            </Pressable>
         </View>
     )
 
