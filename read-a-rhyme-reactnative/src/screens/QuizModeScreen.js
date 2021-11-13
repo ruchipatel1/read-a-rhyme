@@ -6,6 +6,8 @@ import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Modal from "react-native-modal";
 import backButton from "../pictures/green-arrow.png";
+import goldStar from "../../assets/images/goldstar.png";
+import silverStar from "../../assets/images/silverstar.png";
 
 export const QuizModeScreen = (props) => {
     const quizType = props.route.params.quizType
@@ -30,6 +32,7 @@ export const QuizModeScreen = (props) => {
         return parseInt(coins);
     }
     const [goldCoins, setGoldCoins] = useState(getCoins);
+    const [silver, setSilver] = useState(false);
 
     const updateUserCoins = async () => {
         await AsyncStorage.setItem('goldCoins', JSON.stringify(goldCoins));
@@ -81,6 +84,7 @@ export const QuizModeScreen = (props) => {
             setCorrectModal(true);
         } else {
             setNumberIncorrect(() => {
+                setSilver(true);
                 return numberIncorrect+1;
             })
             if (numberIncorrect == 2) {
@@ -108,6 +112,15 @@ export const QuizModeScreen = (props) => {
     function closeCorrectModal() {
         setCorrectModal(false);
         generateQuizQuestion();
+    }
+
+    function stars() {
+        let x = [];
+        let starType = (!silver) ? goldStar : silverStar;
+        for (let i = 0; i < numberCorrect; i++) {
+            x.push(<Image source={starType} style={{height:50, width:50}} key={"Star_"+i}></Image>)
+        }
+        return(x);
     }
 
 
@@ -153,11 +166,14 @@ export const QuizModeScreen = (props) => {
                     </Pressable>
             </View>
         </Modal>
-        <View style={styles.backButton}>
-            <Pressable onPress={() => navigateToLibrary}>
-                <Image source={backButton}></Image>
-            </Pressable>
+        <View style={{flexDirection:"row"}}>
+            {stars()}
         </View>
+        {/* <View style={styles.backButton}>
+            <Pressable onPress={() => navigateToLibrary}>
+                <Image source={backButton} style={{width: 50, height: 50}}></Image>
+            </Pressable>
+        </View> */}
             <View style={styles.quizView}>
             <Pressable onPress={() => sound.playAsync()}>
                 <Text>Play Word</Text>
