@@ -80,6 +80,9 @@ export const QuizModeScreen = (props) => {
             });
             setGoldCoins(goldCoins + 1);
             setPayload([...payload, true]);
+            if (numberIncorrect <= 0) {
+                setSilver(false);
+            }
             setNumberIncorrect(0);
             setCorrectModal(true);
         } else {
