@@ -128,7 +128,11 @@ export const QuizModeScreen = (props) => {
 
 
     return (
+        <View style={styles.centeredView, styles.page}>
+
         <View style={styles.centeredView}>
+            <Image style={styles.quizImage} source={book.image}/>
+        </View>
         <Modal
             isVisible={completedQuizModal}
             onBackdropPress={() => setCompletedQuizModal(false)}
@@ -147,26 +151,30 @@ export const QuizModeScreen = (props) => {
             isVisible={correctModal}
             onBackdropPress={() => setCorrectModal(false)}>
             <View style={styles.centeredView}>
-                <Text>Nice job!</Text>
-                <Pressable
-                        style={[styles.button, styles.buttonClose]}
+                <View style={styles.correctView}>
+                    <Text style={styles.centerText}>Nice Job!</Text>
+                    <Pressable
+                        style={[styles.button, styles.buttonCloseY]}
                         onPress={() => closeCorrectModal()}
                     >
-                        <Text style={styles.textStyle}>Next</Text>
+                        <Text style={styles.centerText}>Next</Text>
                     </Pressable>
+                </View>
             </View>
         </Modal>
         <Modal
             isVisible={incorrectModal}
             onBackdropPress={() => setIncorrectModal(false)}>
             <View style={styles.centeredView}>
-                <Text>Wrong, try again!</Text>
-                <Pressable
-                        style={[styles.button, styles.buttonClose]}
-                        onPress={() => setIncorrectModal(false)}
+                <View style={styles.incorrectView}>
+                    <Text style={styles.centerText}>Not Quite!</Text>
+                    <Pressable
+                        style={[styles.button, styles.buttonCloseY]}
+                        onPress={() => setIncorrectModal()}
                     >
-                        <Text style={styles.textStyle}>Try again</Text>
+                        <Text style={styles.centerText}>Try Again</Text>
                     </Pressable>
+                </View>
             </View>
         </Modal>
         <View style={{flexDirection:"row"}}>
@@ -181,19 +189,31 @@ export const QuizModeScreen = (props) => {
             <Pressable onPress={() => sound.playAsync()}>
                 <Text>Play Word</Text>
             </Pressable>
-            <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[0])}>
-                <Text>{wordMap.get(wordArray[0])}</Text>
-            </Pressable>
-            <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[1])}>
-                <Text>{wordMap.get(wordArray[1])}</Text>
-            </Pressable>
-            <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[2])}>
-                <Text>{wordMap.get(wordArray[2])}</Text>
-            </Pressable>
-            <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[3])}>
-                <Text>{wordMap.get(wordArray[3])}</Text>
-            </Pressable> 
             </View>
+
+            <View style={styles.centeredView}>
+                <View style={styles.modeSelectionView}>
+                    <View style={{flexDirection:"row"}}>
+                        <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[0])}>
+                            <Text style={styles.centerText}>{wordMap.get(wordArray[0])}</Text>
+                        </Pressable>
+                        <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[1])}>
+                            <Text style={styles.centerText}>{wordMap.get(wordArray[1])}</Text>
+                        </Pressable>
+                    </View>
+
+                    <View style={{flexDirection:"row"}}>
+                        <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[2])}>
+                            <Text style={styles.centerText}>{wordMap.get(wordArray[2])}</Text>
+                        </Pressable>
+                        <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[3])}>
+                            <Text style={styles.centerText}>{wordMap.get(wordArray[3])}</Text>
+                        </Pressable> 
+                    </View>
+                </View>
+            </View>
+
+
         </View>
     );
 

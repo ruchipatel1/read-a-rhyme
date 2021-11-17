@@ -3,15 +3,18 @@ import {StyleSheet} from "react-native";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#FFFDF2',
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20
-    },    
+    },
+    page: {
+        backgroundColor: "#FFFDF2"
+    },
     book: {
         height: 225,
         width: 150,
-        borderRadius: 5,
+        borderRadius: 10,
         marginVertical: 40,
         backgroundColor: "#cccccc",
         alignItems: "center",
@@ -34,6 +37,9 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 22
     },
+    centerText: {
+        textAlign: "center",
+    },
     modeSelectionView: {
         margin: 20,
         backgroundColor: "white",
@@ -50,12 +56,15 @@ export const styles = StyleSheet.create({
         elevation: 5
     },
     button: {
-        borderRadius: 20,
+        borderRadius: 35,
         padding: 10,
         elevation: 2
     },
     buttonClose: {
-        backgroundColor: "#F194FF",
+        backgroundColor: "#99DAFF",
+    },
+    buttonCloseY: {
+        backgroundColor: "#ECE1A3",
     },
     libraryView: {
         margin: 20,
@@ -73,10 +82,11 @@ export const styles = StyleSheet.create({
         elevation: 5
     },
     quizAnswer: {
-        alignSelf: 'stretch',
-        borderRadius: 20,
+        // alignSelf: 'stretch',
+        width: "30%",
+        borderRadius: 45,
         padding: 10,
-        backgroundColor: "#F194FF",
+        backgroundColor: "#99DAFF",
         margin: 5
     },
     quizView: {
@@ -89,5 +99,39 @@ export const styles = StyleSheet.create({
         width: 50,
         height: 50,
         resizeMode: 'contain'
+    },
+    incorrectView: {
+        margin: 20,
+        backgroundColor: "#FF9999",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+    correctView: {
+        margin: 20,
+        backgroundColor: "#8AEF9F",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+    quizImage: {
+        padding: 15,
+        alignContent: "center",
     }
 });
