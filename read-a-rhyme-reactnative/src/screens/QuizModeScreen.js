@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { View, Text, Image, Pressable} from "react-native";
+import { View,ScrollView, Text, Image, Pressable} from "react-native";
 import { Audio } from 'expo-av';
 import {styles} from "../Styles";
 import {useNavigation} from '@react-navigation/native';
@@ -128,7 +128,7 @@ export const QuizModeScreen = (props) => {
 
 
     return (
-        <View style={styles.centeredView, styles.page}>
+        <ScrollView style={styles.centeredView, styles.page}>
 
         <View style={styles.centeredView}>
             <Image style={styles.quizImage} source={book.image}/>
@@ -214,7 +214,7 @@ export const QuizModeScreen = (props) => {
             </View>
 
 
-        </View>
+        </ScrollView>
     );
 
 }

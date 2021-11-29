@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import {Text, View, Button, TouchableHighlight, TouchableOpacity, Pressable} from "react-native";
+import {Text, View, ScrollView, Button, TouchableHighlight, TouchableOpacity, Pressable} from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import Modal from "react-native-modal";
 import {styles} from "../Styles";
@@ -32,7 +32,7 @@ export const ReadingScreen = () => {
 
     return(
 
-    <View>
+    <ScrollView>
         <Modal
             isVisible={modeVisible}
             onBackdropPress={() => setModeVisible(false)}>
@@ -84,6 +84,6 @@ export const ReadingScreen = () => {
                 })}
             </View>
         </View>
-    </View>
+    </ScrollView>
     );
 }
