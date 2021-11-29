@@ -38,7 +38,7 @@ export const ReadingScreen = () => {
             onBackdropPress={() => setModeVisible(false)}>
             <View style={styles.centeredView}>
                 <View style={styles.modeSelectionView}>
-                    <Text>Choose your mode:</Text>
+                    <Text style={styles.textStyle1}>Choose your mode:</Text>
                     <Pressable
                         style={[styles.button, styles.buttonClose]}
                         onPress={() => closeAndNavigateToReading(selectedBook, 0)}
@@ -76,7 +76,7 @@ export const ReadingScreen = () => {
             </View>s
         </Modal>
         <View style={styles.container}>
-            <View style={styles.row}>
+            <View style={styles.row, styles.centeredView}>
                 {bookData.map((book, index) => {
                     return <Pressable key={bookData[index].title} onPress={()=>openReadingMode(bookData[index])}>
                     <Book title={bookData[index].title} image={bookData[index].image}></Book>

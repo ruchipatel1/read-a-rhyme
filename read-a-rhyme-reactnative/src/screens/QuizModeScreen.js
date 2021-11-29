@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import playButton from "../pictures/playButton.png";
 import { View,ScrollView, Text, Image, Pressable} from "react-native";
 import { Audio } from 'expo-av';
 import {styles} from "../Styles";
@@ -8,6 +9,7 @@ import Modal from "react-native-modal";
 import backButton from "../pictures/green-arrow.png";
 import goldStar from "../../assets/images/goldstar.png";
 import silverStar from "../../assets/images/silverstar.png";
+
 
 export const QuizModeScreen = (props) => {
     const quizType = props.route.params.quizType
@@ -152,7 +154,7 @@ export const QuizModeScreen = (props) => {
             onBackdropPress={() => setCorrectModal(false)}>
             <View style={styles.centeredView}>
                 <View style={styles.correctView}>
-                    <Text style={styles.centerText}>Nice Job!</Text>
+                    <Text style={styles.centerText, styles.textStyle1}>Nice Job!</Text>
                     <Pressable
                         style={[styles.button, styles.buttonCloseY]}
                         onPress={() => closeCorrectModal()}
@@ -167,7 +169,7 @@ export const QuizModeScreen = (props) => {
             onBackdropPress={() => setIncorrectModal(false)}>
             <View style={styles.centeredView}>
                 <View style={styles.incorrectView}>
-                    <Text style={styles.centerText}>Not Quite!</Text>
+                    <Text style={styles.centerText, styles.textStyle1}>Not Quite!</Text>
                     <Pressable
                         style={[styles.button, styles.buttonCloseY]}
                         onPress={() => setIncorrectModal()}
@@ -185,9 +187,10 @@ export const QuizModeScreen = (props) => {
                 <Image source={backButton} style={{width: 50, height: 50}}></Image>
             </Pressable>
         </View> */}
-            <View style={styles.quizView}>
+            <View style={styles.quizView, styles.centeredView}>
             <Pressable onPress={() => sound.playAsync()}>
-                <Text>Play Word</Text>
+                {/* <Text>Play Word</Text> */}
+                <Image source={playButton} style={styles.playImage}></Image>
             </Pressable>
             </View>
 
