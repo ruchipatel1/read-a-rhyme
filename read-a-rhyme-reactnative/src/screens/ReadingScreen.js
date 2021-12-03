@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import {Text, View, Button, TouchableHighlight, TouchableOpacity, Pressable} from "react-native";
+import {Text, View, ScrollView, Button, TouchableHighlight, TouchableOpacity, Pressable} from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import Modal from "react-native-modal";
 import {styles} from "../Styles";
@@ -32,13 +32,13 @@ export const ReadingScreen = () => {
 
     return(
 
-    <View>
+    <ScrollView>
         <Modal
             isVisible={modeVisible}
             onBackdropPress={() => setModeVisible(false)}>
             <View style={styles.centeredView}>
                 <View style={styles.modeSelectionView}>
-                    <Text>Choose your mode:</Text>
+                    <Text style={styles.textStyle1}>Choose your mode:</Text>
                     <Pressable
                         style={[styles.button, styles.buttonClose]}
                         onPress={() => closeAndNavigateToReading(selectedBook, 0)}
@@ -76,7 +76,7 @@ export const ReadingScreen = () => {
             </View>s
         </Modal>
         <View style={styles.container}>
-            <View style={styles.row}>
+            <View style={styles.row, styles.centeredView}>
                 {bookData.map((book, index) => {
                     return <Pressable key={bookData[index].title} onPress={()=>openReadingMode(bookData[index])}>
                     <Book title={bookData[index].title} image={bookData[index].image}></Book>
@@ -84,6 +84,6 @@ export const ReadingScreen = () => {
                 })}
             </View>
         </View>
-    </View>
+    </ScrollView>
     );
 }

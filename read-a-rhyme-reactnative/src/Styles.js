@@ -40,6 +40,17 @@ export const styles = StyleSheet.create({
     centerText: {
         textAlign: "center",
     },
+
+    textStyle: {
+        paddingLeft: 10,
+        paddingRight: 10
+
+    },
+    textStyle1: {
+        paddingBottom: 15,
+        fontWeight: "bold"
+
+    },
     modeSelectionView: {
         margin: 20,
         backgroundColor: "white",
@@ -58,7 +69,8 @@ export const styles = StyleSheet.create({
     button: {
         borderRadius: 35,
         padding: 10,
-        elevation: 2
+        elevation: 2,
+        margin: 3
     },
     buttonClose: {
         backgroundColor: "#99DAFF",
@@ -133,6 +145,19 @@ export const styles = StyleSheet.create({
     quizImage: {
         padding: 15,
         alignContent: "center",
+<<<<<<< HEAD
         height:200,
+=======
+        width: 192.5,
+        height: 250,
+        resizeMode: 'cover',
+        borderRadius: 10
+    },
+    playImage: {
+        alignContent: "center",
+        width: 125,
+        height: 125,
+        resizeMode: 'cover'
+>>>>>>> 56c19020ed50bfb4a250648134857e282f6a89b8
     }
 });
