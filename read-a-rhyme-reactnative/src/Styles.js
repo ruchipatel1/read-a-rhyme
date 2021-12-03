@@ -133,5 +133,6 @@ export const styles = StyleSheet.create({
     quizImage: {
         padding: 15,
         alignContent: "center",
+        height:200,
     }
 });

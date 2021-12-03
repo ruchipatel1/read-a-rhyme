@@ -4,6 +4,12 @@ import { Audio } from 'expo-av';
 import HighlightedWord from "../components/HighlightedWord";
 import {useNavigation} from '@react-navigation/native';
 
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
+
+
+
 export const ListeningModeScreen = (props) => {
     const book = props.route.params.book;
     const [sound, setSound] = useState(null);
