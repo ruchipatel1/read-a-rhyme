@@ -18,7 +18,7 @@ export const AppNavigator = () => {
     if(hasUser) {
         return (
             <Stack.Navigator>
-                <Stack.Screen name="Reading" component={ReadingScreen} />
+                <Stack.Screen name="Library" component={ReadingScreen} />
                 <Stack.Screen name="Shop" component={ShopScreen} />
                 <Stack.Screen name="Listening" component={ListeningModeScreen} options={{}}/>
                 <Stack.Screen name="Quiz" component={QuizModeScreen} options={{}}/>

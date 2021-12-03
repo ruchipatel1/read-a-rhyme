@@ -6,6 +6,9 @@ import {styles} from "../Styles";
 import Book from "../components/book";
 import { bookData } from '../bookData';
 import { ListeningModeScreen } from "./ListeningModeScreen";
+import * as ScreenOrientation from 'expo-screen-orientation';
+
+
 
 export const ReadingScreen = () => {
     // const [books, updateBooks] = useState([]);
@@ -15,8 +18,13 @@ export const ReadingScreen = () => {
     const [selectedBook, setSelectedBook] = useState(null);
     const nav = useNavigation();
 
+    async function changeScreenOrientation() {
+        await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
+      }
+
     function closeAndNavigateToReading(book, readingType){
         setModeVisible(!modeVisible);
+        changeScreenOrientation();
         nav.navigate('Listening', {book, readingType});
     }
 
