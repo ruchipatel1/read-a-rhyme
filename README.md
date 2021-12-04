@@ -14,7 +14,7 @@
 Install `node` and `npm` first. You can install `node` [here](https://nodejs.org/en/download/) according to the requirements of your computer. 
 Run to install the Expo CLI.
 ```
-npm install -g expo-cli
+$ npm install -g expo-cli
 ```
 ## Dependencies
 Run
