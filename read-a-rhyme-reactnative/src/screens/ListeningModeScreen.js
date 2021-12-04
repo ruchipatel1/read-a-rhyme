@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import { Audio } from 'expo-av';
 import HighlightedWord from "../components/HighlightedWord";
+import * as ScreenOrientation from 'expo-screen-orientation';
 import {useNavigation} from '@react-navigation/native';
 
 export const ListeningModeScreen = (props) => {
@@ -24,6 +25,10 @@ export const ListeningModeScreen = (props) => {
         }
       });
 
+    async function changeScreenOrientationLandscape() {
+        await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
+    }
+
     useEffect(() => {
         async function createSound() {
             const { sound } = await Audio.Sound.createAsync(
@@ -31,6 +36,7 @@ export const ListeningModeScreen = (props) => {
             );
             setSound(sound);
         }
+        changeScreenOrientationLandscape();
         createSound();
     }, []);
 

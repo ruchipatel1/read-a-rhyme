@@ -6,7 +6,6 @@ import {styles} from "../Styles";
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Modal from "react-native-modal";
-import backButton from "../pictures/green-arrow.png";
 import goldStar from "../../assets/images/goldstar.png";
 import silverStar from "../../assets/images/silverstar.png";
 
