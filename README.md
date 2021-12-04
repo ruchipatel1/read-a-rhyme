@@ -10,18 +10,26 @@
 ## Known bugs/defects
 * Despite clicking on different words, the application plays the same audio.
 # Install Guide
-To run this app locally, clone this repository and install `node` and `npm` first. You can install `node` [here](https://nodejs.org/en/download/) according to the requirements of your computer. After that run
-
-```
-$ npm install
-```
-This will install all the needed dependencies for our project. Then run
+## Pre-requisites
+Install `node` and `npm` first. You can install `node` [here](https://nodejs.org/en/download/) according to the requirements of your computer. 
+Run to install the Expo CLI.
 ```
 npm install -g expo-cli
 ```
-in the `read-a-rhyme-reactnative` directory of this repository. 
+## Dependencies
+Run
+```
+$ npm install
+```
+This will install all the needed dependencies for our project.
+## Download
+Click the green `Code` button on above. Then press download to download a zip file of this repository. 
 
-Then you can run 
+## Build
+No build necessary for this app. 
+
+## Running Application
+You can run 
 
 ```
 $ npm run web
