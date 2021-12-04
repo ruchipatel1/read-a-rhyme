@@ -16,7 +16,7 @@ To run this app locally, you must install `node` and `npm` first. You can instal
 $ npm install
 
 ```
-and 
+This will install all the needed dependencies for our project. Then run
 ```
 npm install -g npm
 ```
