@@ -1,24 +1,34 @@
-# read-a-rhyme
+# Read-A-Rhyme 1.0 Release Notes
+## Primary Features
+* User can select Readings
+* User can choose Reading Mode
+* User can take quizzes based off entire reading
+* User can take quizzes based off single words
+## Bug Fixes
+* Orientation wasn't changing when returning to Library, but should be working fine now
+* Audio was not rerendering when loading a new long audio, but now it does. 
+## Known bugs/defects
+* Despite clicking on different words, the application plays the same audio.
+# Install Guide
+To run this app locally, you must install `node` and `npm` first. You can install `node` [here][https://nodejs.org/en/download/] according to the requirements of your computer. After that run
 
-A literacy app to help schoolchildren learn to read.
+```
+$ npm install
 
-## Developer Quick Start Guide
+```
+and 
+```
+npm install -g npm
+```
+and 
+```
+npm install -g expo-cli
+```
+in the `read-a-rhyme-reactnative` directory of this repository. 
 
-Dependencies to install:
+Then you can run 
 
-* nodeJS (https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-* npm (https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-* expo cli (https://docs.expo.dev/workflow/expo-cli/)
-* Android Studio (Recommended not required yet)
-* Xcode (mac only / found in app store)
-
-cd into the read-a-rhyme-reactnative directory and run
-
-````
-npm run web
-````
-----------
-if first time, run 
-````
-npm install
-````
+```
+$ npm run web
+```
+to run the app. 
