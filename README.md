@@ -8,7 +8,7 @@
 * Orientation wasn't changing when returning to Library, but should be working fine now
 * Audio was not rerendering when loading a new long audio, but now it does. 
 ## Known bugs/defects
-* Despite clicking on different words, the application plays the same audio.
+* Despite clicking on different words, the application plays the same audio in the non-narrated reading mode.
 # Install Guide
 ## Pre-requisites
 Install `node` and `npm` first. You can install `node` [here](https://nodejs.org/en/download/) according to the requirements of your computer. 
