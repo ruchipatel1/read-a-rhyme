@@ -10,11 +10,10 @@
 ## Known bugs/defects
 * Despite clicking on different words, the application plays the same audio.
 # Install Guide
-To run this app locally, you must install `node` and `npm` first. You can install `node` [here](https://nodejs.org/en/download/) according to the requirements of your computer. After that run
+To run this app locally, clone this repository and install `node` and `npm` first. You can install `node` [here](https://nodejs.org/en/download/) according to the requirements of your computer. After that run
 
 ```
 $ npm install
-
 ```
 This will install all the needed dependencies for our project. Then run
 ```
