@@ -18,10 +18,6 @@ $ npm install
 ```
 This will install all the needed dependencies for our project. Then run
 ```
-npm install -g npm
-```
-and 
-```
 npm install -g expo-cli
 ```
 in the `read-a-rhyme-reactnative` directory of this repository. 
