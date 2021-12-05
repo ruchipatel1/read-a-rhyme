@@ -1,22 +1,30 @@
 import React, { useEffect, useState, useRef } from "react";
 import {Text, View, ScrollView, Button, TouchableHighlight, TouchableOpacity, Pressable} from "react-native";
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, NavigationEvents} from '@react-navigation/native';
 import Modal from "react-native-modal";
 import {styles} from "../Styles";
 import Book from "../components/book";
 import { bookData } from '../bookData';
-import { ListeningModeScreen } from "./ListeningModeScreen";
+import * as ScreenOrientation from 'expo-screen-orientation';
+import { useIsFocused } from '@react-navigation/native';
 
 export const ReadingScreen = () => {
-    // const [books, updateBooks] = useState([]);
     const ref = useRef();
     const [modeVisible, setModeVisible] = useState(false);
     const [libraryVisible, setLibraryVisible] = useState(false);
     const [selectedBook, setSelectedBook] = useState(null);
     const nav = useNavigation();
 
+    const isFocused = useIsFocused();
+
+    async function changeScreenOrientationPortrait() {
+        await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+    }
+
+
     function closeAndNavigateToReading(book, readingType){
         setModeVisible(!modeVisible);
+        // changeScreenOrientationLandscape();
         nav.navigate('Listening', {book, readingType});
     }
 
@@ -29,6 +37,10 @@ export const ReadingScreen = () => {
         setModeVisible(true);
         setSelectedBook(book);
     }
+
+    useEffect(() => {
+        changeScreenOrientationPortrait();
+    }, [isFocused])
 
     return(
 
