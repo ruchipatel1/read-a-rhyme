@@ -8,9 +8,9 @@ import playButton from "../pictures/playButton.png";
 import {styles} from "../Styles";
 import greenArrow from "../pictures/greenArrow.png";
 
-import { LogBox } from 'react-native';
-LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
-LogBox.ignoreAllLogs();//Ignore all log notifications
+// import { LogBox } from 'react-native';
+// LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+// LogBox.ignoreAllLogs();//Ignore all log notifications
 
 export const ListeningModeScreen = (props) => {
     const book = props.route.params.book;
@@ -97,7 +97,6 @@ export const ListeningModeScreen = (props) => {
                 {readingType ? generateTouchableWords() : <Text style={styles.bodyText}>{book.text}</Text>}
             </View>
             <Pressable onPress={() => navigateToLibrary()} style={{alignItems:"center", paddingBottom:50}}>
-                <Text style={[styles.bodyText, styles.backToLibrary]}>Go back to library!</Text>
                 <Image source={greenArrow} style={[styles.playImage, {height:75, width:75}]}></Image>
             </Pressable>
         </ScrollView>

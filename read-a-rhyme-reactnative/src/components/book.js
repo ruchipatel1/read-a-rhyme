@@ -6,8 +6,8 @@ const Book = (props) => {
     
     return (
         <View style = {styles.book}>
-            <Text style={styles.readingText}> {props.title} </Text>
-            <Image source={props.image} style={{ width: 150, height: 200 }} />
+            <Text style={{ fontSize: 20, justifyContent: 'center', textAlign: 'center'}}> {props.title} </Text>
+            <Image source={props.image} style={{ width: 200, height: 250, borderColor: '#99DAFF', borderWidth: 5, borderRadius: 100 }} />
         </View>
         
     )

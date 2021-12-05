@@ -15,8 +15,11 @@ export const styles = StyleSheet.create({
         height: 225,
         width: 150,
         borderRadius: 10,
+        paddingTop: 20,
+        paddingBottom: 30,
+        marginTop: 50,
+        marginBottom: 50,
         marginVertical: 40,
-        backgroundColor: "#cccccc",
         alignItems: "center",
         justifyContent: "center",
         marginRight: 20
@@ -25,8 +28,6 @@ export const styles = StyleSheet.create({
     bookTitle: {
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#cccccc",
-
     },
     row: {
         flexDirection: "row",
@@ -154,6 +155,18 @@ export const styles = StyleSheet.create({
         alignContent: "center",
         width: 125,
         height: 125,
+        resizeMode: 'cover'
+    },
+    playImageSmall: {
+        alignContent: "center",
+        width: 40,
+        height: 40,
+        resizeMode: 'cover'
+    },
+    xButton: {
+        alignContent: "center",
+        width: 50,
+        height: 50,
         resizeMode: 'cover'
     },
     title: {
