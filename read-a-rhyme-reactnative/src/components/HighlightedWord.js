@@ -7,12 +7,12 @@ import { styles } from '../Styles';
 const HighlightedWord = (props) => {
 
     const [popupVisible, setPopupVisible] = useState(false);
-    console.log(props);
+    //console.log(props);
     const nav = useNavigation();
 
     async function playWord() {
-        console.log(props.audio);
-        const {sound} = await Audio.Sound.createAsync(require("../../assets/audio/words/lamb.mp3"));
+        //console.log(props.word.toLowerCase());
+        const {sound} = await Audio.Sound.createAsync({uri: "https://sight-word-audios.s3.amazonaws.com/audio/words/"+ props.word.toLowerCase() +".mp3"});
         await sound.playAsync();
     }
 
