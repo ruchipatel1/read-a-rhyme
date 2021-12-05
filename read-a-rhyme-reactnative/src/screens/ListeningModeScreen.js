@@ -29,7 +29,7 @@ export const ListeningModeScreen = (props) => {
             );
             setSound(sound);
         }
-        //changeScreenOrientationLandscape();
+        changeScreenOrientationLandscape();
         createSound();
     }, []);
 
