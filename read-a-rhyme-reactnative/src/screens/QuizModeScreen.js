@@ -6,7 +6,7 @@ import {styles} from "../Styles";
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Modal from "react-native-modal";
-import backButton from "../pictures/green-arrow.png";
+import backButton from "../pictures/greenArrow.png";
 import goldStar from "../../assets/images/goldstar.png";
 import silverStar from "../../assets/images/silverstar.png";
 
@@ -82,9 +82,6 @@ export const QuizModeScreen = (props) => {
             });
             setGoldCoins(goldCoins + 1);
             setPayload([...payload, true]);
-            if (numberIncorrect <= 0) {
-                setSilver(false);
-            }
             setNumberIncorrect(0);
             setCorrectModal(true);
         } else {
@@ -98,7 +95,7 @@ export const QuizModeScreen = (props) => {
             }
             setIncorrectModal(true);
         }
-        if (numberCorrect == 5) {
+        if (numberCorrect == 4) {
             console.log(payload);
             updateUserCoins(goldCoins);
             console.log(goldCoins)
@@ -139,8 +136,8 @@ export const QuizModeScreen = (props) => {
             isVisible={completedQuizModal}
             onBackdropPress={() => setCompletedQuizModal(false)}
             >
-            <View style={styles.centeredView}>
-                <Text>You've completed the quiz!</Text>
+            <View style={[styles.centeredView, {backgroundColor:'white', paddingBottom: 20, borderRadius: 20}]}>
+                <Text style={[styles.bodyText]}>You've completed the quiz!</Text>
                 <Pressable
                         style={[styles.button, styles.buttonClose]}
                         onPress={() => navigateToLibrary()}
@@ -179,7 +176,7 @@ export const QuizModeScreen = (props) => {
                 </View>
             </View>
         </Modal>
-        <View style={{flexDirection:"row"}}>
+        <View style={{flexDirection:"row", alignItems: "center", justifyContent:"center", paddingTop:20}}>
             {stars()}
         </View>
         {/* <View style={styles.backButton}>

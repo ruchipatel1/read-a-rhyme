@@ -1,34 +1,21 @@
 import React, {useEffect, useState} from "react";
-import { View, Text, Image, Pressable, StyleSheet } from "react-native";
+import { View, Text, Image, Pressable, StyleSheet, ScrollView } from "react-native";
 import { Audio } from 'expo-av';
 import HighlightedWord from "../components/HighlightedWord";
 import {useNavigation} from '@react-navigation/native';
+import playButton from "../pictures/playButton.png";
+import {styles} from "../Styles";
+import greenArrow from "../pictures/greenArrow.png";
 
 import { LogBox } from 'react-native';
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
-
-
 
 export const ListeningModeScreen = (props) => {
     const book = props.route.params.book;
     const [sound, setSound] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const nav = useNavigation();
-
-    const styles = StyleSheet.create({
-        title: {
-            textAlign: "center",
-            fontWeight: 'bold',
-            fontSize: 25
-
-        },
-        bodyText: {
-            textAlign: "center",
-            fontSize: 15
-
-        }
-      });
 
     useEffect(() => {
         async function createSound() {
@@ -89,23 +76,24 @@ export const ListeningModeScreen = (props) => {
     }
 
     return (
-        <View>
+        <ScrollView>
             <Text style={styles.title}>{book.title}</Text>
-            <View>
-            <Image source={book.image} style={{ width: 300, height: 400}} />
+            <View style={{alignItems: "center"}}>
+            <Image source={book.image} style={styles.quizImage} />
             </View>
+            {readingType ? null : 
+                <Pressable onPress={() => playSound()} style={{alignItems: "center", paddingTop: 15}}>
+                    <Image source={playButton} style={styles.playImage}></Image>
+                </Pressable>
+            }
             <View>
                 {readingType ? generateTouchableWords() : <Text style={styles.bodyText}>{book.text}</Text>}
             </View>
-            {readingType ? null : 
-                <Pressable onPress={() => playSound()}>
-                    <Text>Play/Pause</Text>
-                </Pressable>
-            }
-            <Pressable onPress={() => navigateToLibrary()}>
-                <Text>Go back to library!</Text>
+            <Pressable onPress={() => navigateToLibrary()} style={{alignItems:"center", paddingBottom:50}}>
+                <Text style={[styles.bodyText, styles.backToLibrary]}>Go back to library!</Text>
+                <Image source={greenArrow} style={[styles.playImage, {height:75, width:75}]}></Image>
             </Pressable>
-        </View>
+        </ScrollView>
     )
 
 }

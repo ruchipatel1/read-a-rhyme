@@ -145,9 +145,6 @@ export const styles = StyleSheet.create({
     quizImage: {
         padding: 15,
         alignContent: "center",
-<<<<<<< HEAD
-        height:200,
-=======
         width: 192.5,
         height: 250,
         resizeMode: 'cover',
@@ -158,6 +155,20 @@ export const styles = StyleSheet.create({
         width: 125,
         height: 125,
         resizeMode: 'cover'
->>>>>>> 56c19020ed50bfb4a250648134857e282f6a89b8
+    },
+    title: {
+        textAlign: "center",
+        fontWeight: 'bold',
+        fontSize: 25,
+        paddingVertical: 15,            
+    },
+    bodyText: {
+        textAlign: "center",
+        fontSize: 20,
+        paddingVertical: 15,
+        lineHeight: 40
+    },
+    backToLibrary: {
+        paddingTop: 40,
     }
 });

@@ -21,8 +21,9 @@ const HighlightedWord = (props) => {
         nav.navigate('Quiz', {book, word, quizType});
     }
 
+    //marginBottom:-11 is the most hacky fix but I could not get it to work otherwise
     return (
-        <View>
+        <View style={{marginBottom:-11}}>
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -45,12 +46,14 @@ const HighlightedWord = (props) => {
                     </View>
                 </View>
             </Modal>
-            <Text
-                style={{color:'blue', fontWeight: "bold"}}
-                onPress={() => playWord(props.word).then()}
-                onLongPress={() => setPopupVisible(true)}
-            >{props.word}{props.punctuation}
-            </Text>
+            <View>
+                <Text
+                    style={{fontSize: 20, color:'lightskyblue'}}
+                    onPress={() => playWord(props.word).then()}
+                    onLongPress={() => setPopupVisible(true)}
+                >{props.word}{props.punctuation}
+                </Text>
+            </View>
         </View>
     )
 }
