@@ -25,7 +25,7 @@ export const ReadingScreen = () => {
     function closeAndNavigateToReading(book, readingType){
         setModeVisible(!modeVisible);
         // changeScreenOrientationLandscape();
-        nav.navigate('Listening', {book, readingType});
+        nav.navigate('Story', {book, readingType});
     }
 
     function closeAndNavigateToQuiz(book, quizType){

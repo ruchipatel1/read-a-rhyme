@@ -20,7 +20,7 @@ export const AppNavigator = () => {
             <Stack.Navigator>
                 <Stack.Screen name="Library" component={ReadingScreen} options={{orientation: 'portrait'}}/>
                 <Stack.Screen name="Shop" component={ShopScreen} />
-                <Stack.Screen name="Listening" component={ListeningModeScreen} options={{orientation: 'landscape_left'}}/>
+                <Stack.Screen name="Story" component={ListeningModeScreen} options={{orientation: 'landscape_left'}}/>
                 <Stack.Screen name="Quiz" component={QuizModeScreen} options={{}}/>
             </Stack.Navigator>
         );

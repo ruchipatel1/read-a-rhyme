@@ -28,9 +28,9 @@ const HighlightedWord = (props) => {
                 animationType="slide"
                 transparent={true}
                 visible={popupVisible}>
-                <View style={styles.centeredView}>
-                    <View>
-                        <Text>{props.word}</Text>
+                <View style={[styles.centeredView, { height:"100%", backgroundColor:'rgba(0,0,0,0.5)'}]}>
+                    <View style={{backgroundColor:'white', padding:20,borderRadius:10}}>
+                        <Text style={styles.title}>{props.word}</Text>
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
                             onPress={() => openMiniQuiz(props.book, props.word, 1)}

@@ -95,7 +95,7 @@ export const styles = StyleSheet.create({
     },
     quizAnswer: {
         // alignSelf: 'stretch',
-        width: "30%",
+        width: "33%",
         borderRadius: 45,
         padding: 10,
         backgroundColor: "#99DAFF",

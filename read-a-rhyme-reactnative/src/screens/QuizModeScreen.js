@@ -16,10 +16,8 @@ export const QuizModeScreen = (props) => {
     const book = props.route.params.book;
     const quizWord = props.route.params.word;
     
-    const wordList = book.wordList;
     const [sound, setSound] = useState(null);
-    const wordMap = book.words;
-    const [wordArray, setWordArray] = useState(wordList);
+    const [wordArray, setWordArray] = useState(book.newWordList);
     const [word, setWord] = useState(null);
     const [numberIncorrect, setNumberIncorrect] = useState(0);
     const [numberCorrect, setNumberCorrect] = useState(0);
@@ -28,6 +26,8 @@ export const QuizModeScreen = (props) => {
     const [incorrectModal, setIncorrectModal] = useState(false);
     const nav = useNavigation();
     const [payload, setPayload] = useState([]);
+
+    const [newWordList, setNewWordList] = useState(book.newWordList);
 
     const getCoins = async () => {
         const coins = await AsyncStorage.getItem('goldCoins');
@@ -43,23 +43,42 @@ export const QuizModeScreen = (props) => {
 
     function pickWord() {
         if (quizType) {
-            for (let [key, value] of wordMap.entries()) {
-                if (value === quizWord)
-                  return key;
-            }
+            console.log("quizword: " + quizWord);
+            return newWordList.indexOf(quizWord);
         } else {
-            return wordArray[Math.floor(Math.random() * wordArray.length)];
+            console.log(newWordList);
+            return Math.floor(Math.random() * newWordList.length);
         }
         
     }
 
+    function myRandomInts(quantity, max){
+        const arr = []
+        while(arr.length < quantity){
+          var candidateInt = Math.floor(Math.random() * max)
+          if(arr.indexOf(candidateInt) === -1) arr.push(candidateInt)
+        }
+      return(arr)
+      }
+
     function generateQuizQuestion() {
-        setWordArray([...wordList].sort(() => .5 - Math.random()).slice(0,4))
+        const result = pickWord();
+        let numArr = myRandomInts(4, newWordList.length);
+        if (!numArr.includes(result)) {
+            let index = myRandomInts(1, 4);
+            index = index[0];
+            numArr[index] = result;
+        }
+        let answerArr = new Array(4);
+        for (let i = 0; i < answerArr.length; i++) {
+            answerArr[i] = newWordList[numArr[i]];
+        }
+        setWordArray(answerArr);
         async function createSound() {
-            const result = await pickWord();
-            setWord(result);
+            console.log("result: " + result);
+            setWord(newWordList[result]);
             const { sound } = await Audio.Sound.createAsync(
-                result
+                {uri: "https://sight-word-audios.s3.amazonaws.com/audio/words/"+ newWordList[result] +".mp3"}
             );
             setSound(sound);
         }
@@ -76,7 +95,10 @@ export const QuizModeScreen = (props) => {
 
 
     function answerCheck(wordPressed) {
-        if (wordMap.get(wordPressed) == wordMap.get(word)) {
+        console.log("word pressed:" + wordPressed);
+        console.log("word:" + word);
+        
+        if (wordPressed == word) {
             setNumberCorrect(() => {
                 return numberCorrect+1;
             });
@@ -108,7 +130,7 @@ export const QuizModeScreen = (props) => {
         if (completedQuizModal) {
             setCompletedQuizModal(false);
         }
-        nav.navigate('Reading');
+        nav.navigate('Library');
     }
 
     function closeCorrectModal() {
@@ -195,19 +217,19 @@ export const QuizModeScreen = (props) => {
                 <View style={styles.modeSelectionView}>
                     <View style={{flexDirection:"row"}}>
                         <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[0])}>
-                            <Text style={styles.centerText}>{wordMap.get(wordArray[0])}</Text>
+                            <Text style={styles.centerText}>{wordArray[0]}</Text>
                         </Pressable>
                         <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[1])}>
-                            <Text style={styles.centerText}>{wordMap.get(wordArray[1])}</Text>
+                            <Text style={styles.centerText}>{wordArray[1]}</Text>
                         </Pressable>
                     </View>
 
                     <View style={{flexDirection:"row"}}>
                         <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[2])}>
-                            <Text style={styles.centerText}>{wordMap.get(wordArray[2])}</Text>
+                            <Text style={styles.centerText}>{wordArray[2]}</Text>
                         </Pressable>
                         <Pressable style={styles.quizAnswer} onPress={() => answerCheck(wordArray[3])}>
-                            <Text style={styles.centerText}>{wordMap.get(wordArray[3])}</Text>
+                            <Text style={styles.centerText}>{wordArray[3]}</Text>
                         </Pressable> 
                     </View>
                 </View>

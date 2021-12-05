@@ -70,6 +70,7 @@ export const ListeningModeScreen = (props) => {
         let words = book.text.match(/\b(\w+)\b|[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~\n]/g);
         console.log(words);
         let x = [];
+        x.push(" ");
         for (let i = 0; i < words.length; i++) {
             if (wordList.includes(words[i].toLowerCase())) {
                 x.push(<HighlightedWord word={words[i]} book={book} punctuation={punctuation(words[i + 1])} key={"Key_" + i}/>);
