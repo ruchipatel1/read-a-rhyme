@@ -7,6 +7,7 @@ import {AuthContext} from "./AuthContext";
 import {LoginScreen} from "../screens/LoginScreen";
 import { ListeningModeScreen } from "../screens/ListeningModeScreen";
 import { QuizModeScreen } from "../screens/QuizModeScreen";
+import { styles } from "../Styles";
 
 
 const Drawer = createDrawerNavigator();
@@ -17,18 +18,21 @@ export const AppNavigator = () => {
 
     if(hasUser) {
         return (
+
             <Stack.Navigator>
-                <Stack.Screen name="Library" component={ReadingScreen} options={{orientation: 'portrait'}}/>
-                <Stack.Screen name="Shop" component={ShopScreen} />
-                <Stack.Screen name="Story" component={ListeningModeScreen} options={{orientation: 'landscape_left'}}/>
-                <Stack.Screen name="Quiz" component={QuizModeScreen} options={{}}/>
+                <Stack.Screen name="Library" component={ReadingScreen} options={{orientation: 'portrait', headerStyle: {backgroundColor: "#FFF4B6"}, headerTitleStyle: {fontWeight: "bold"}}}/>
+                <Stack.Screen name="Shop" component={ShopScreen} options={{headerStyle: {backgroundColor: "#FFF4B6"}, headerTitleStyle: {fontWeight: "bold"}}}/>
+                <Stack.Screen name="Story" component={ListeningModeScreen} options={{orientation: 'landscape_left', headerStyle: {backgroundColor: "#FFF4B6"}, headerTitleStyle: {fontWeight: "bold"}}}/>
+                <Stack.Screen name="Quiz" component={QuizModeScreen} options={{headerStyle: {backgroundColor: "#FFF4B6"}, headerTitleStyle: {fontWeight: "bold"}}}/>
             </Stack.Navigator>
+
         );
     } else {
         return (
-            <Stack.Navigator>
+            <Stack.Navigator style={styles.header}>
                 <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}}/>
             </Stack.Navigator>
         )
     }
+
 };

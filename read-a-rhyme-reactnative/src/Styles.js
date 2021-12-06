@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
     page: {
         backgroundColor: "#FFFDF2"
     },
+
     book: {
         height: 225,
         width: 150,
@@ -77,7 +78,7 @@ export const styles = StyleSheet.create({
         backgroundColor: "#99DAFF",
     },
     buttonCloseY: {
-        backgroundColor: "#ECE1A3",
+        backgroundColor: "#FFF4B6",
     },
     libraryView: {
         margin: 20,
