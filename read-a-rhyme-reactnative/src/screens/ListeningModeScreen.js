@@ -83,23 +83,25 @@ export const ListeningModeScreen = (props) => {
     }
 
     return (
-        <ScrollView>
+        <View>
             <Text style={styles.title}>{book.title}</Text>
-            <View style={{alignItems: "center"}}>
+            <View style={{paddingLeft: 25}}>
             <Image source={book.image} style={styles.quizImage} />
             </View>
+            
+            <ScrollView style={{top: "-33%"}}>
+                {readingType ? generateTouchableWords() : <Text style={styles.bodyText}>{book.text}</Text>}
+                <Text> {"\n"} {"\n"} {"\n"} </Text>
+            </ScrollView>
             {readingType ? null : 
-                <Pressable onPress={() => playSound()} style={{alignItems: "center", paddingTop: 15}}>
+                <Pressable onPress={() => playSound()} style={{top: "-59%", right: "-7.5%", width: "15%", height: "10%"}}>
                     <Image source={playButton} style={styles.playImage}></Image>
                 </Pressable>
             }
-            <View>
-                {readingType ? generateTouchableWords() : <Text style={styles.bodyText}>{book.text}</Text>}
-            </View>
             <Pressable onPress={() => navigateToLibrary()} style={{alignItems:"center", paddingBottom:50}}>
                 <Image source={greenArrow} style={[styles.playImage, {height:75, width:75}]}></Image>
             </Pressable>
-        </ScrollView>
+        </View>
     )
 
 }
