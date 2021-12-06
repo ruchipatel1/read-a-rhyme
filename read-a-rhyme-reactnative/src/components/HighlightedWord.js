@@ -36,7 +36,8 @@ const HighlightedWord = (props) => {
                 animationType="slide"
                 transparent={true}
                 visible={popupVisible}
-                onBackdropPress={() => setPopupVisible(false)}>
+                onBackdropPress={() => setPopupVisible(false)}
+                supportedOrientations={['portrait', 'portrait-upside-down', 'landscape', 'landscape-left', 'landscape-right']}  >
                 <View style={[styles.centeredView, { height:"100%", backgroundColor:'rgba(0,0,0,0.5)'}]}>
                     <View style={{backgroundColor:'white', padding:20,borderRadius:10}}>
                         <View style={{flexDirection:"row", paddingLeft: 10}}>
