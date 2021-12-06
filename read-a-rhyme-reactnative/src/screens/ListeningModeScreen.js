@@ -83,7 +83,7 @@ export const ListeningModeScreen = (props) => {
     }
 
     return (
-        <View>
+        <View style={styles.page}>
             <Text style={styles.title}>{book.title}</Text>
             <View style={{paddingLeft: 25}}>
             <Image source={book.image} style={styles.quizImage} />
