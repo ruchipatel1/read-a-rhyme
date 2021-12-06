@@ -36,7 +36,7 @@ $ expo install
 ```
 This will install all the needed dependencies for our project.
 ## Download
-Click the green `Code` button on above. Then press download to download a zip file of this repository. 
+Click the green `Code` button above. Then press download to download a zip file of this repository. 
 
 ## Build
 No build necessary for this app. 
