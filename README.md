@@ -9,8 +9,8 @@
 ## Bug Fixes
 * Orientation wasn't changing when returning to the Library, but this has been resolved.
 * Audio was not re-rendering when loading a new narration, but this has been resolved.
+* Despite clicking on different words, the application would the same audio in the non-narrated reading mode. This has been fixed withour new integration with s3.
 ## Known bugs/defects
-* Despite clicking on different words, the application plays the same audio in the non-narrated reading mode.
 * Audio doesn't work on Android.
 * Styling for long press modal is not consistent with the other modals.
 * Audio doesn't stop when you go back.
