@@ -20,6 +20,8 @@
 * Play button needs to be moved off of the image in reading mode.
 ## To-Dos
 * Integrate Login and D.A.P.
+* Add down arrows to indicate scrolling.
+* Make reading mode all black text. Words only highlight on click.
 # Install Guide
 ## Pre-requisites
 Install `node` and `npm` first. You can install `node` [here](https://nodejs.org/en/download/) according to the requirements of your computer.
